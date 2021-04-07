@@ -42,32 +42,30 @@ SELECT * FROM Employees
 SELECT * FROM EmployeeTerritories
 
 --1
---LOCK TABLE Region WRITE
---INSERT INTO Region(RegionDescription) VALUES('Middle Earth')
+SELECT * FROM Region WITH (tablockx)
+INSERT INTO Region(RegionID, RegionDescription) VALUES (5, 'Middle Earth')
 
---LOCK TABLE Territories IN EXCLUSIVE MODE
---INSERT INTO Territories(TerritoryDescription, RegionID) VALUES('Gondor', 5)
+SELECT * FROM Territories WITH (tablockx)
+INSERT INTO Territories(TerritoryID ,TerritoryDescription, RegionID) VALUES(261205, 'Gondor', 5)
 
---LOCK TABLE Employees IN EXCLUSIVE MODE
---INSERT INTO Employees (FirstName, LastName ) VALUES('Aragorn', 'King')
-
---LOCK TABLE EmployeeTerritories IN EXCLUSIVE MODE
---INSERT INTO EmployeeTerritories(EmployeeID, TerritoryID) VALUES()
+SELECT * FROM Employees WITH (tablockx)
+INSERT INTO Employees (FirstName, LastName ) VALUES('Aragorn', 'King')
 
 --2
---UPDATE Territories
---SET TerritoryDescription = 'Arnor'
---WHERE TerritoryDescription = 'Gondor'
-
+SELECT * FROM Territories WITH (tablockx)
+UPDATE Territories
+SET TerritoryDescription = 'Arnor'
+WHERE TerritoryDescription = 'Gondor'
 
 --3
+SELECT * FROM Territories WITH (tablockx)
+
 alter table Territories nocheck constraint all
 
 DELETE FROM Region
 WHERE RegionDescription = 'Middle Earth'
 
 alter table Territories check constraint all
-
 
 --4
 CREATE VIEW view_product_order_zhu
@@ -136,10 +134,10 @@ exec sp_product_order_city_zhu 'Chai', @cities out, @tot out
 
 
 --7
-SELECT * FROM Region
-SELECT * FROM Territories
-SELECT * FROM EmployeeTerritories
-SELECT * FROM Employees
+SELECT * FROM Region WITH (TABLOCKX)
+SELECT * FROM Territories WITH (TABLOCKX)
+SELECT * FROM EmployeeTerritories WITH (TABLOCKX)
+SELECT * FROM Employees WITH (TABLOCKX)
 
 
 CREATE PROC sp_move_employees_zhu
