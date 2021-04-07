@@ -1,4 +1,4 @@
-1.	What is an object in SQL?
+Ôªø1.	What is an object in SQL?
 	Object in a database that is used to store or reference data.
 	Anything which we make from create command is known as Database Object.It can be used to hold and manipulate the data.
 
@@ -80,19 +80,61 @@ ON c.cust_id = o.cust_id
 WHERE DATEPART(year, order_date) = 2002
 GROUP BY c.iname
 
- --2.  The following table is used to store information about companyís personnel: write a query that returns all employees whose last names  start with ìAî.
+ --2.  The following table is used to store information about company‚Äôs personnel: write a query that returns all employees whose last names  start with ‚ÄúA‚Äù.
 Create table person (id int, firstname varchar(100), lastname varchar(100)) 
 
 SELECT * FROM person WHERE lastname LIKE 'A%'
 
---3.  The information about companyís personnel is stored in the following table:
---The filed managed_id contains the person_id of the employeeís manager.
+--3.  The information about company‚Äôs personnel is stored in the following table:
+--The filed managed_id contains the person_id of the employee‚Äôs manager.
 --Please write a query that would return the names of all top managers (an employee who does not have  a manger, and the number of people that report directly to this manager.
 
 Create table person(person_id int primary key, manager_id int null, name varchar(100)not null) 
 
 SELECT name FROM person WHERE manager_id IS NULL
 
---4
+--4 List all events that can cause a trigger to be executed
+{BEFORE | AFTER | INSTEAD OF} ‚àí This specifies when the trigger will be executed. 
+The INSTEAD OF clause is used for creating trigger on a view
 
---5
+--5. Generate a destination schema in 3rd Normal Form.  Include all necessary fact, join, and dictionary tables, and all Primary and Foreign Key relationships.  
+--The following assumptions can be made:
+--a. Each Company can have one or more Divisions.
+--b. Each record in the Company table represents a unique combination 
+--c. Physical locations are associated with Divisions.
+--d. Some Company Divisions are collocated at the same physical of Company Name and Division Name.
+--e. Contacts can be associated with one or more divisions and the address, but are differentiated by suite/mail drop records.status of 
+--	each association should be separately maintained and audited.
+
+CREATE TABLE 
+
+CREATE TABLE Company(
+	cid int not null primary key,
+	cname varchar(30),
+	address varchar(30),
+	city varchar(30),
+	country varchar(30),
+)
+
+CREATE TABLE Contact(
+	contactID int not null primary key,
+	name varchar(30),
+	address varchar(30),
+	city varchar(30),
+	country varchar(30)
+)
+
+CREATE TABLE Division(
+	did int not null primary key,
+	dname varchar(30),
+	address varchar(30),
+	city varchar(30),
+	country varchar(30),
+)
+
+CREATE TABLE Record(
+	rid int not null primary key,
+	cid int FOREIGN KEY REFERENCES Company(cid),
+	did int int FOREIGN KEY REFERENCES Division(did)
+	contactId int int FOREIGN KEY REFERENCES Contact(contactID)
+)
