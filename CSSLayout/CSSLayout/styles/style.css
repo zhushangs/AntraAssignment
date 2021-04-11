@@ -1,0 +1,142 @@
+﻿.header {
+    background-color: #234465;
+    width: 100%;
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+div.search-container {
+    text-align: right
+}
+
+.header-right {
+    float: right;
+    margin-right:1%;
+    margin-top:1%;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+ul {
+    list-style: none;
+}
+
+ul.social-icons {
+    display: flex;
+}
+
+li {
+    padding: 0 5px 0 5px
+}
+
+.menu {
+    display: flex;
+    padding: 0 0px 0 500px;
+    
+}
+.menu li {
+    padding: 0px 50px 0px 50px;
+}
+
+#footer {
+    background-color: #272e31;
+    color: rgba(255, 255, 255, .6);
+}
+
+.section {
+    position: relative;
+    overflow: hidden;
+}
+
+.col {
+    width: 25%;
+    display: table-cell;   
+}
+
+.row {
+    margin-left:250px;
+    display: table;
+    width: 70%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+
+.corp{
+    margin-left:50px;
+}
+
+#menu-footer-3-quicklinks {
+    margin-left: -40px;
+    
+}
+.widget_nav_menu li {
+    clear: both;
+    margin-bottom: 8px;
+    position: relative;
+    border-bottom: 1px solid;
+    padding-bottom: 8px;
+    border-color: rgba(255, 255, 255, .1);
+}
+.subfooter {
+    background-color: #000;
+    color: #eee;
+}
+
+.subfooter .sidebar-header {
+    display: none;
+}
+
+.news {
+    background-color:lightgrey;
+}
+
+.articles {
+    background-color:white;
+}
+
+ul.paging{
+    margin-left:11%;
+    display:inline-flex;
+}
+
+li.pages {
+    border-style: solid;
+    border-color: lightblue;
+    background-color: lightblue;
+    margin-left: 5px;
+}
+
+.active {
+    border-color: orange !important;
+    background-color: orange !important;
+}
