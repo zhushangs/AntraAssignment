@@ -1,0 +1,102 @@
+﻿.q6 {
+    display: flex;
+}
+.left {
+    flex: 0 0 65%;
+}
+
+.header{
+    font-size:xx-large;
+    font-weight:bold;
+    color:#0e4ea7;
+}
+
+.title {
+    font-size: x-large;
+    font-weight: bold;
+    color: #0e4ea7;
+    text-align:left;
+}
+
+.size {
+    font-size: large;
+    color: #0e4ea7;
+    text-align: left;
+}
+
+.row {
+    display: table;
+    width: 100%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+}
+
+.col {
+    display: table-cell;
+}
+
+.product {
+    align-content:center;
+    text-align:center;
+}
+
+.images{
+    width: 80%;
+}
+
+.laptops {
+    width: 100%;
+    align-self: center;
+}
+
+.laptop {
+    margin-left:5%;
+    width: 90%;
+    box-sizing: content-box;
+    border-style: solid;
+    border-color: #aadeed;
+    border-radius: 15px 15px;
+    
+}
+
+.priceTag{
+    text-align:right;
+}
+
+.price {
+    height: 40px;
+    width: 60%;
+    border-radius: 4px;
+    background-color: #0e4ea7;
+    color: white;
+}
+
+.active {
+    border-style: solid;
+    border-color: red;
+}
+
+.slidecontainer {
+    background-color: #c7f2f1;
+    flex: 0 0 15%;
+}
+
+.ranges {
+    width: 100%;
+}
+
+.slider{
+    width:100%;
+}
+
+.mini {
+    text-align: left;
+}
+
+.maxi {
+    text-align:right;
+    
+}
+.mini, .maxi {
+    display: inline-block;
+}

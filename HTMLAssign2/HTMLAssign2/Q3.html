@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="styles/Q3.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="q3" id="q3">
+        <div>
+            <h1>FLIGHT ORDER</h1>
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <label>From</label>
+                        <input type="text" id="from" name="from" placeholder="enter a city">
+                    </div>
+                    <div class="col">
+                        <label>To</label>
+                        <input type="text" id="to" name="to" placeholder="enter a city">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Departure Date</label><br />
+                        <input type="date" id="departure" name="departure">
+                    </div>
+                    <div class="col">
+                        <label>Time Interval</label><br />
+                        <input type="datetime" id="dTime" name="dTime">
+                        <input type="datetime" id="dTime" name="dTime">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Return Date</label><br />
+                        <input type="date" id="return" name="return">
+                    </div>
+                    <div class="col">
+                        <label>Time Interval</label><br />
+                        <input type="datetime" id="dTime" name="dTime">
+                        <input type="datetime" id="dTime" name="dTime">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="times">
+                        <div class="col ">
+                            <label>12+</label><br />
+                            <input type="number" id="number12" name="number12" class="time">
+                        </div>
+                        <div class="col time">
+                            <label>2-12</label><br />
+                            <input type="number" id="number2" name="number2" class="time">
+                        </div>
+                        <div class="col time">
+                            <label>0-2</label><br />
+                            <input type="number" id="number0" name="number0 " class="time">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label>Choose class</label><br />
+                        <select name="classes" id="classes">
+                            <option value="economy">Economy</option>
+                            <option value="business">Business</option>
+                        </select>
+                    </div>
+                    
+                </div>
+                <div class="btn">
+                    <input type="submit" value="Search">
+                </div>
+                
+                
+            </form>
+        </div>
+    </div>
+</body>
+</html>

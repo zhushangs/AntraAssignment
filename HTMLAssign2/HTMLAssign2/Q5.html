@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="styles/Q5.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="q5">
+        <div>
+            <p class="header">fakebook</p>
+            <p class="title">Registration</p>
+            <p class="safe">It is safe and it will always be!</p>
+        </div>
+        <div class="row">
+            <div class="col f1">
+                <form class="form1">
+                    <p class="intro">None-Important Information</p>
+                    <div class="col">
+                        <div class="row">
+                            <input type="text" id="fname" name="fname" placeholder="FirstName">
+                            <input type="text" id="lname" name="lname" placeholder="LastName">
+                        </div>
+                        <div class="row">
+                            <input type="email" id="email" name="email" placeholder="Your Email">
+                            <input type="number" id="phone" name="phone" placeholder="Phone Number">
+                        </div>
+                        <div class="row">
+                            <input type="password" id="password" name="password" placeholder="Your Password">
+                            <input type="text" id="website" name="website" placeholder="Website">
+                        </div>
+                        <div class="row">
+                            <label>Birthday</label><br />
+                            <input type="datetime-local" id="bday" name="bday">
+                        </div>
+                        <div class="row">
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Male</label>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Female</label>
+                            <input type="radio" id="other" name="gender" value="other">
+                            <label for="other">Other</label>
+                        </div>
+                    </div>
+                </form>
+                <br />
+                <br />
+                <input type="reset" value="Clear Form" class="btn">
+            </div>
+            <div class="col f2">
+                <form class="form2">
+                    <p class="intro">Important Infomation *required</p>
+                    <div class="col">
+                        <div class="row">
+                            <select name="country" id="country" required>
+                                <option value="1"> Country </option>
+                                <option value="2"> 2 </option>
+                                <option value="3"> 3 </option>
+                                <option value="4"> 4 </option>
+                            </select>
+                            <input type="text" id="village" name="village" placeholder="Village" required>
+                            <input type="text" id="district" name="district" placeholder="District" required>
+                        </div>
+                        <div class="row">
+                            <input type="text" id="street" name="street" placeholder="Street" required>
+                            <input type="text" id="nr" name="nr" placeholder="Nr" required>
+                            <input type="text" id="floor" name="floor" placeholder="Floor" required>
+                            <input type="text" id="Apnr" name="Apnr" placeholder="Ap Nr" required>
+                        </div>
+                        <div class="door">
+                            <label>Door Color</label><br />
+                        </div>
+                        <div class="row">
+                            <input type="color" id="dcolor" name="dcolor" required>
+                            <input type="text" id="waterNr" name="waterNr" placeholder="Water Meter Nr" required>
+                            <select name="pizza" id="pizza" required>
+                                <option value="1"> Aunt Panties' Size </option>
+                                <option value="2"> 2 </option>
+                                <option value="3"> 3 </option>
+                                <option value="4"> 4 </option>
+                            </select>
+
+                        </div>
+                        <div class="row">
+                            <label>More Personal Infomation</label><br />
+                            <textarea contenteditable="true" class="moreInfo">
+                            Give Us More Information!!!
+                        </textarea>
+                        </div>
+                    </div>
+                </form>
+                <br />
+                <input type="submit" value="Register"  class="btn">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
