@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="JSforForm.js"></script>
+</head>
+<body>
+    <form>
+        <label><b>Enter a Message</b></label>
+        <input type="text" name="message" id="user_input">
+    </form>
+
+    <input type="submit" onclick="showInput();"><br />
+    <label>Your input: </label>
+    <p><span id='display'></span></p>
+
+    Enter message: <input type="text" id="message">
+    <input type="submit" onclick="showMessage()" value="submit" />
+    <p> Message is: <span id="display_message"></span> </p>
+
+    <div>
+        <input type="text" name="name" id="name" placeholder="Enter your name" />
+        <input type="number" name="mobile" id="mobile" placeholder="Enter your phone number" />
+        <input type="email" name="email" id="email" placeholder="Enter your email address" />
+    </div>
+    <div>
+        <select name="cars" id="cars" >
+            <option id="select" value="None">Select</option>
+            <option id="toyota" value="Toyota">Toyota</option>
+            <option id="honda" value="Honda">Honda</option>
+        </select>
+        <select name="year" id="year" onchange="getPrice()">
+            <option value="None">Select</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+        </select>
+        <input type="number" name="price" id="price" disabled />
+    </div>
+
+    <input type="submit" onclick="showSummary()" value="submit" />
+    <div>
+        <h1 id="summary"></h1>
+        <p id="displayName"></p>
+        <p id="displayMobile"></p>
+        <p id="displayEmail"></p>
+        <p id="displayCars"></p>
+        <p id="displayYears"></p>
+        <p id="displayPrice"></p>
+    </div>
+
+</body>
+</html>
