@@ -1,0 +1,13 @@
+D:\AntraAssignment\Demo\Exercise3\bin\Debug\netcoreapp3.1\Exercise3.exe
+D:\AntraAssignment\Demo\Exercise3\bin\Debug\netcoreapp3.1\Exercise3.deps.json
+D:\AntraAssignment\Demo\Exercise3\bin\Debug\netcoreapp3.1\Exercise3.runtimeconfig.json
+D:\AntraAssignment\Demo\Exercise3\bin\Debug\netcoreapp3.1\Exercise3.runtimeconfig.dev.json
+D:\AntraAssignment\Demo\Exercise3\bin\Debug\netcoreapp3.1\Exercise3.dll
+D:\AntraAssignment\Demo\Exercise3\bin\Debug\netcoreapp3.1\Exercise3.pdb
+D:\AntraAssignment\Demo\Exercise3\obj\Debug\netcoreapp3.1\Exercise3.csprojAssemblyReference.cache
+D:\AntraAssignment\Demo\Exercise3\obj\Debug\netcoreapp3.1\Exercise3.AssemblyInfoInputs.cache
+D:\AntraAssignment\Demo\Exercise3\obj\Debug\netcoreapp3.1\Exercise3.AssemblyInfo.cs
+D:\AntraAssignment\Demo\Exercise3\obj\Debug\netcoreapp3.1\Exercise3.csproj.CoreCompileInputs.cache
+D:\AntraAssignment\Demo\Exercise3\obj\Debug\netcoreapp3.1\Exercise3.dll
+D:\AntraAssignment\Demo\Exercise3\obj\Debug\netcoreapp3.1\Exercise3.pdb
+D:\AntraAssignment\Demo\Exercise3\obj\Debug\netcoreapp3.1\Exercise3.genruntimeconfig.cache
