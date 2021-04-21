@@ -8,11 +8,12 @@ namespace Exercise3
     {
         Insert = 1,
         Print,
+        PrintByCategoryAndDate,
         Search,
         Update,
         Delete,
         Sort,
-        FixSpace,
+        Normalize,
         Exit
     }
 }

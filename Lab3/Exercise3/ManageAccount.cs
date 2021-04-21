@@ -15,11 +15,25 @@ namespace Exercise3
         void AddDepartment()
         {
             HouseholdAccounts a = new HouseholdAccounts();
-            Console.Write("Enter date  = ");
-            a.Date = Console.ReadLine();
+            do
+            {
+                Console.Write("Enter date (YYYYMMDD format) = ");
+                a.Date = Console.ReadLine();
+                if (string.IsNullOrEmpty(a.Date))
+                {
+                    Console.WriteLine("Empty input, please try again");
+                }
+            } while (string.IsNullOrEmpty(a.Date));
 
-            Console.Write("Enter Description = ");
-            a.Description = Console.ReadLine();
+            do
+            {
+                Console.Write("Enter Description = ");
+                a.Description = Console.ReadLine();
+                if(string.IsNullOrEmpty(a.Description))
+                {
+                    Console.WriteLine("Empty input, please try again");
+                }
+            } while (string.IsNullOrEmpty(a.Description));
 
             Console.Write("Enter Category = ");
             a.Category = Console.ReadLine();
@@ -38,7 +52,43 @@ namespace Exercise3
             int length = accCollection.Count;
             for (int i = 0; i < length; i++)
             {
-                Console.WriteLine($"{accCollection[i].Date} \t {accCollection[i].Description} \t {accCollection[i].Category} \t {accCollection[i].Amount}");
+                //Console.WriteLine($"{accCollection[i].Date} \t {accCollection[i].Description} \t {accCollection[i].Category} \t {accCollection[i].Amount}");
+                Console.WriteLine("{0} - {1}/{2}/{3} - {4} -({5}) - {6}",
+                                   i + 1,
+                                   accCollection[i].Date.Substring(6, 2), // Day
+                                   accCollection[i].Date.Substring(4, 2), // Month
+                                   accCollection[i].Date.Substring(0, 4), // Year
+                                   accCollection[i].Description,
+                                   accCollection[i].Category,
+                                   accCollection[i].Amount.ToString("N2"));
+            }
+        }
+
+        void PrintByCategoryAndDate()
+        {
+            Console.Write("Enter the category = ");
+            string category = Console.ReadLine();
+
+            Console.Write("Enter the the start date (YYYYMMDD) = ");
+            string startDate = Console.ReadLine();
+
+            Console.Write("Enter the the end date (YYYYMMDD) = ");
+            string endDate = Console.ReadLine();
+
+
+            List<HouseholdAccounts> accCollection = accRepository.GetByCategoryAndDate(category, startDate, endDate);
+            int length = accCollection.Count;
+            for (int i = 0; i < length; i++)
+            {
+                //Console.WriteLine($"{accCollection[i].Date} \t {accCollection[i].Description} \t {accCollection[i].Category} \t {accCollection[i].Amount}");
+                Console.WriteLine("{0} - {1}/{2}/{3} - {4} -({5}) - {6}",
+                                   i + 1,
+                                   accCollection[i].Date.Substring(6, 2), // Day
+                                   accCollection[i].Date.Substring(4, 2), // Month
+                                   accCollection[i].Date.Substring(0, 4), // Year
+                                   accCollection[i].Description,
+                                   accCollection[i].Category,
+                                   accCollection[i].Amount.ToString("N2"));
             }
         }
 
@@ -52,16 +102,16 @@ namespace Exercise3
         void Update()
         {
             HouseholdAccounts d = new HouseholdAccounts();
-            Console.Write("Enter date  = ");
+            Console.Write("Enter date (YYYYMMDD format) = ");
             d.Date = Console.ReadLine();
 
-            Console.Write("Enter new Description = ");
+            Console.Write("Enter new Description of expenditure or revenu = ");
             d.Description = Console.ReadLine();
-
-            Console.Write("Enter new Category = ");
+            
+            Console.Write("Enter Category = ");
             d.Category = Console.ReadLine();
 
-            Console.Write("Enter new amount  = ");
+            Console.Write("Enter amount  = ");
             d.Amount = Convert.ToInt32(Console.ReadLine());
 
             accRepository.Update(d);
@@ -75,15 +125,30 @@ namespace Exercise3
             int length = accCollection.Count;
             for (int i = 0; i < length; i++)
             {
-                Console.WriteLine($"{accCollection[i].Date} \t {accCollection[i].Description} \t {accCollection[i].Category} \t {accCollection[i].Amount}");
+                //Console.WriteLine($"{accCollection[i].Date} \t {accCollection[i].Description} \t {accCollection[i].Category} \t {accCollection[i].Amount}");
+                Console.WriteLine("{0} - {1}/{2}/{3} - {4} -({5}) - {6}",
+                                   i + 1,
+                                   accCollection[i].Date.Substring(6, 2), // Day
+                                   accCollection[i].Date.Substring(4, 2), // Month
+                                   accCollection[i].Date.Substring(0, 4), // Year
+                                   accCollection[i].Description,
+                                   accCollection[i].Category,
+                                   accCollection[i].Amount.ToString("N2"));
             }
         }
 
         void Sorted()
         {
             accRepository.GetSorted();
-            Console.WriteLine("Account sorted successfully");
+            Console.WriteLine("Account Date sorted successfully");
         }
+
+        void Normalized()
+        {
+            accRepository.GetNormalized();
+            Console.WriteLine("Account Description sorted successfully");
+        }
+
 
         public void Run()
         {
@@ -102,6 +167,9 @@ namespace Exercise3
                     case (int)CRUDOperations.Print:
                         Print();
                         break;
+                    case (int)CRUDOperations.PrintByCategoryAndDate:
+                        PrintByCategoryAndDate();
+                        break;
                     case (int)CRUDOperations.Search:
                         Search();
                         break;
@@ -113,6 +181,9 @@ namespace Exercise3
                         break;
                     case (int)CRUDOperations.Sort:
                         Sorted();
+                        break;
+                    case (int)CRUDOperations.Normalize:
+                        Normalized();
                         break;
                     case (int)CRUDOperations.Exit:
                         Console.WriteLine("Thanks for visit. Please visit again !!!!");

@@ -10,7 +10,9 @@ namespace Exercise3
         void Update(T item);
         List<T> Search(string text);
         List<T> GetAll();
+        List<T> GetByCategoryAndDate(string category, string startDate, string endDate);
         void GetSorted();
+        void GetNormalized();
         T GetByDate(string date);
         void Delete(string date);
 
