@@ -10,5 +10,9 @@ namespace Exercise4
         {
             Console.WriteLine("I'am going to class");
         }
+        public void ShowAge()
+        {
+            Console.WriteLine("My age is " + age + " years old");
+        }
     }
 }

@@ -17,9 +17,6 @@ namespace Exercise4
         {
             this.age = n;
         }
-        public void ShowAge()
-        {
-            Console.WriteLine("My age is " + age + " years old");
-        }
+        
     }
 }
