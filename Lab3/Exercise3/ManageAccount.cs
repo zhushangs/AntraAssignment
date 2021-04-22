@@ -15,15 +15,29 @@ namespace Exercise3
         void AddDepartment()
         {
             HouseholdAccounts a = new HouseholdAccounts();
+            
+            bool valid = true;
             do
             {
                 Console.Write("Enter date (YYYYMMDD format) = ");
                 a.Date = Console.ReadLine();
                 if (string.IsNullOrEmpty(a.Date))
                 {
+                    valid = false;
                     Console.WriteLine("Empty input, please try again");
                 }
-            } while (string.IsNullOrEmpty(a.Date));
+                else if (a.Date.Length != 8 || Convert.ToInt32(a.Date) < 10000000 || Convert.ToInt32(a.Date) > 30000000)
+                {
+                    valid = false;
+                    Console.WriteLine("Invalid Date input");
+                }
+                else
+                {
+                    valid = true;
+                }
+               
+            } while (!valid);
+
 
             do
             {
@@ -38,8 +52,19 @@ namespace Exercise3
             Console.Write("Enter Category = ");
             a.Category = Console.ReadLine();
 
-            Console.Write("Enter amount  = ");
+            //do
+            //{
+            //    Console.Write("Enter amount (Must be integer) = ");
+            //    a.Amount = Convert.ToInt32(Console.ReadLine());
+            //    if (a.Amount.GetType() != typeof(int))
+            //    {
+            //        Console.WriteLine("Empty input, please try again");
+            //    }
+            //} while (a.Amount.GetType() != typeof(int));
+
+            Console.Write("Enter amount (Must be integer) = ");
             a.Amount = Convert.ToInt32(Console.ReadLine());
+
 
             accRepository.Insert(a);
             Console.WriteLine("Account created successfully");
