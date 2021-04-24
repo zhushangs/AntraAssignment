@@ -1,0 +1,12 @@
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\bin\Debug\netcoreapp3.1\MinionsApp.Data.Model.dll
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\obj\Debug\netcoreapp3.1\MinionsApp.Data.Repository.AssemblyInfoInputs.cache
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\obj\Debug\netcoreapp3.1\MinionsApp.Data.Repository.AssemblyInfo.cs
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\obj\Debug\netcoreapp3.1\MinionsApp.Data.Repository.csprojAssemblyReference.cache
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\bin\Debug\netcoreapp3.1\MinionsApp.Data.Repository.deps.json
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\bin\Debug\netcoreapp3.1\MinionsApp.Data.Repository.dll
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\bin\Debug\netcoreapp3.1\MinionsApp.Data.Repository.pdb
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\bin\Debug\netcoreapp3.1\MinionsApp.Data.Model.pdb
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\obj\Debug\netcoreapp3.1\MinionsApp.Data.Repository.csproj.CoreCompileInputs.cache
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\obj\Debug\netcoreapp3.1\MinionsApp.Data.Repository.csproj.CopyComplete
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\obj\Debug\netcoreapp3.1\MinionsApp.Data.Repository.dll
+D:\AntraAssignment\MinionsApp\MinionsApp.Data.Repository\obj\Debug\netcoreapp3.1\MinionsApp.Data.Repository.pdb
