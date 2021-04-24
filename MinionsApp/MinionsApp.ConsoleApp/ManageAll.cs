@@ -261,10 +261,12 @@ namespace MinionsApp.ConsoleApp
             minions.Id = Convert.ToInt32(Console.ReadLine());
 
             minionsRepositroy.CallSP(minions);
-            foreach (var item in minionsRepositroy.GetAll())
-            {
-                Console.WriteLine($"{item.Id} \t {item.Name} \t {item.Age} ");
-            }
+            //foreach (var item in minionsRepositroy.GetAll())
+            //{
+            //    Console.WriteLine($"{item.Name} - {item.Age} years old");
+            //}
+            var minion = minionsRepositroy.GetById(minions.Id);
+            Console.WriteLine($"{minion.Name} - {minion.Age} years old");
         }
 
         public void Run()
