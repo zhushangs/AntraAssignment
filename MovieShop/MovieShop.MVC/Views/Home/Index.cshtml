@@ -1,0 +1,25 @@
+﻿@model List<ApplicationCore.Models.Response.MovieResponseModel>
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @ViewData["Pagetitle"] @ViewBag.count 
+</div>
+
+@foreach (var movie in Model)
+{
+    <ul>
+        <li>
+            @movie.Id
+        </li>
+        <li>
+            @movie.Title
+        </li>
+        <li>
+            @movie.Budget
+        </li>
+    </ul>
+}
