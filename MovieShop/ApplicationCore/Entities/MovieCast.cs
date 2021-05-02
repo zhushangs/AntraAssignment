@@ -8,17 +8,21 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public class MovieGenre
+    public class MovieCast
     {
         [Key]
         public int MovieId { get; set; }
         [Key]
-        public int GenreId { get; set; }
+        public int CastId { get; set; }
+        [Key]
+        [StringLength(450)]
+        public string Character { get; set; }
 
         [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
+        [ForeignKey("CastId")]
+        public Cast Cast { get; set; }
 
-        [ForeignKey("GenreId")]
-        public Genre Genre { get; set; }
+
     }
 }

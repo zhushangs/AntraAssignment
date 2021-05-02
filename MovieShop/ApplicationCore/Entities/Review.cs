@@ -8,17 +8,20 @@ using System.Threading.Tasks;
 
 namespace ApplicationCore.Entities
 {
-    public class MovieGenre
+    public class Review
     {
         [Key]
         public int MovieId { get; set; }
         [Key]
-        public int GenreId { get; set; }
+        public int UserId { get; set; }
+
+        [Column(TypeName = "decimal(3, 2)")]
+        public decimal Rating { get; set; }
+        public string? ReviewText { get; set; }
 
         [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
-
-        [ForeignKey("GenreId")]
-        public Genre Genre { get; set; }
+        [ForeignKey("UserId")]
+        public User User { get; set; }
     }
 }
