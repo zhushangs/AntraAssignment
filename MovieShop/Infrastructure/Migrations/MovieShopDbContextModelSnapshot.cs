@@ -42,7 +42,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Casts");
+                    b.ToTable("Cast");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Crew", b =>
@@ -56,9 +56,11 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProfilePath")
+                        .HasMaxLength(2084)
                         .HasColumnType("nvarchar(2084)");
 
                     b.Property<string>("TmdbUrl")
@@ -66,7 +68,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Crews");
+                    b.ToTable("Crew");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Favorite", b =>
@@ -88,7 +90,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Favorites");
+                    b.ToTable("Favorite");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Genre", b =>
@@ -105,7 +107,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres");
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Movie", b =>
@@ -120,13 +122,17 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(2084)");
 
                     b.Property<decimal?>("Budget")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,4)")
+                        .HasDefaultValue(9.9m);
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("ImdbUrl")
                         .HasMaxLength(2084)
@@ -137,6 +143,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(64)");
 
                     b.Property<string>("Overview")
+                        .HasMaxLength(4096)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PosterUrl")
@@ -144,13 +151,17 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(2084)");
 
                     b.Property<decimal?>("Price")
-                        .HasColumnType("decimal(5,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(5,2)")
+                        .HasDefaultValue(9.9m);
 
                     b.Property<DateTime?>("ReleaseDate")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal?>("Revenue")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,4)")
+                        .HasDefaultValue(9.9m);
 
                     b.Property<int?>("RunTime")
                         .HasColumnType("int");
@@ -160,6 +171,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -175,7 +187,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movie");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.MovieCast", b =>
@@ -187,14 +199,13 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Character")
-                        .HasMaxLength(450)
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("CastId", "MovieId", "Character");
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("MovieCasts");
+                    b.ToTable("MovieCast");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.MovieCrew", b =>
@@ -217,22 +228,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("CrewId");
 
-                    b.ToTable("MovieCrews");
-                });
-
-            modelBuilder.Entity("ApplicationCore.Entities.MovieGenre", b =>
-                {
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("GenreId")
-                        .HasColumnType("int");
-
-                    b.HasKey("MovieId", "GenreId");
-
-                    b.HasIndex("GenreId");
-
-                    b.ToTable("MovieGenres");
+                    b.ToTable("MovieCrew");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Purchase", b =>
@@ -252,7 +248,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(9.9m);
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -263,7 +261,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Purchases");
+                    b.ToTable("Purchase");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Review", b =>
@@ -284,7 +282,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Reviews");
+                    b.ToTable("Review");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Role", b =>
@@ -300,7 +298,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Roles");
+                    b.ToTable("Role");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Trailer", b =>
@@ -314,18 +312,18 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(2084)
+                        .HasColumnType("nvarchar(2084)");
 
                     b.Property<string>("TrailerUrl")
-                        .HasMaxLength(450)
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(2084)
+                        .HasColumnType("nvarchar(2084)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MovieId");
 
-                    b.ToTable("Trailers");
+                    b.ToTable("Trailer");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.User", b =>
@@ -338,7 +336,7 @@ namespace Infrastructure.Migrations
                     b.Property<int?>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("DateOfBrith")
+                    b.Property<DateTime?>("DateOfBirth")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -354,7 +352,9 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(1024)");
 
                     b.Property<bool?>("IsLocked")
-                        .HasColumnType("bit");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<DateTime?>("LastLoginDateTime")
                         .HasColumnType("datetime2");
@@ -363,7 +363,7 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("nvarchar(128)");
 
-                    b.Property<DateTime?>("LockoutDate")
+                    b.Property<DateTime?>("LockoutEndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PhoneNumber")
@@ -379,22 +379,41 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
+
+                    b.ToTable("User");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entities.UserRole", b =>
+            modelBuilder.Entity("MovieGenre", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("GenreId")
                         .HasColumnType("int");
 
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
+
+                    b.HasKey("GenreId", "MovieId");
+
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieGenre");
+                });
+
+            modelBuilder.Entity("UserRole", b =>
+                {
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.HasKey("UserId", "RoleId");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("RoleId");
+                    b.HasKey("RoleId", "UserId");
 
-                    b.ToTable("UserRoles");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRole");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Favorite", b =>
@@ -406,7 +425,7 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("ApplicationCore.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Favorites")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -419,13 +438,13 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("ApplicationCore.Entities.MovieCast", b =>
                 {
                     b.HasOne("ApplicationCore.Entities.Cast", "Cast")
-                        .WithMany()
+                        .WithMany("MovieCasts")
                         .HasForeignKey("CastId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ApplicationCore.Entities.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("MovieCasts")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -438,37 +457,18 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("ApplicationCore.Entities.MovieCrew", b =>
                 {
                     b.HasOne("ApplicationCore.Entities.Crew", "Crew")
-                        .WithMany()
+                        .WithMany("MovieCrews")
                         .HasForeignKey("CrewId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ApplicationCore.Entities.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("MovieCrews")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Crew");
-
-                    b.Navigation("Movie");
-                });
-
-            modelBuilder.Entity("ApplicationCore.Entities.MovieGenre", b =>
-                {
-                    b.HasOne("ApplicationCore.Entities.Genre", "Genre")
-                        .WithMany()
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ApplicationCore.Entities.Movie", "Movie")
-                        .WithMany()
-                        .HasForeignKey("MovieId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Genre");
 
                     b.Navigation("Movie");
                 });
@@ -481,27 +481,27 @@ namespace Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ApplicationCore.Entities.User", "User")
+                    b.HasOne("ApplicationCore.Entities.User", "Customer")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Movie");
+                    b.Navigation("Customer");
 
-                    b.Navigation("User");
+                    b.Navigation("Movie");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Review", b =>
                 {
                     b.HasOne("ApplicationCore.Entities.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("Reviews")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ApplicationCore.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Reviews")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -514,7 +514,7 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("ApplicationCore.Entities.Trailer", b =>
                 {
                     b.HasOne("ApplicationCore.Entities.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("Trailers")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -522,23 +522,62 @@ namespace Infrastructure.Migrations
                     b.Navigation("Movie");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entities.UserRole", b =>
+            modelBuilder.Entity("MovieGenre", b =>
                 {
-                    b.HasOne("ApplicationCore.Entities.Role", "Role")
+                    b.HasOne("ApplicationCore.Entities.Genre", null)
+                        .WithMany()
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ApplicationCore.Entities.Movie", null)
+                        .WithMany()
+                        .HasForeignKey("MovieId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("UserRole", b =>
+                {
+                    b.HasOne("ApplicationCore.Entities.Role", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ApplicationCore.Entities.User", "User")
+                    b.HasOne("ApplicationCore.Entities.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("Role");
+            modelBuilder.Entity("ApplicationCore.Entities.Cast", b =>
+                {
+                    b.Navigation("MovieCasts");
+                });
 
-                    b.Navigation("User");
+            modelBuilder.Entity("ApplicationCore.Entities.Crew", b =>
+                {
+                    b.Navigation("MovieCrews");
+                });
+
+            modelBuilder.Entity("ApplicationCore.Entities.Movie", b =>
+                {
+                    b.Navigation("MovieCasts");
+
+                    b.Navigation("MovieCrews");
+
+                    b.Navigation("Reviews");
+
+                    b.Navigation("Trailers");
+                });
+
+            modelBuilder.Entity("ApplicationCore.Entities.User", b =>
+                {
+                    b.Navigation("Favorites");
+
+                    b.Navigation("Reviews");
                 });
 #pragma warning restore 612, 618
         }

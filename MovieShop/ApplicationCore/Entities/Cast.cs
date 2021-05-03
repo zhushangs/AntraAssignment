@@ -11,10 +11,12 @@ namespace ApplicationCore.Entities
     {
         public int Id { get; set; }
         [StringLength(128)]
-        public string? Name { get; set; }
-        public string? Gender { get; set; }
-        public string? TmdbUrl { get; set; }
+        public string Name { get; set; }
+        public string Gender { get; set; }
+        public string TmdbUrl { get; set; }
         [StringLength(2084)]
-        public string? ProfilePath { get; set; }
+        public string ProfilePath { get; set; }
+
+        public ICollection<MovieCast> MovieCasts { get; set; }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MovieShopDbContext))]
-    [Migration("20210502185835_MovieCrew")]
-    partial class MovieCrew
+    [Migration("20210503191713_upToClass")]
+    partial class upToClass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,31 +21,6 @@ namespace Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ApplicationCore.Entities.Crew", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Gender")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<string>("ProfilePath")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(2084)");
-
-                    b.Property<string>("TmdbUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Crew");
-                });
-
             modelBuilder.Entity("ApplicationCore.Entities.Genre", b =>
                 {
                     b.Property<int>("Id")
@@ -54,12 +29,13 @@ namespace Infrastructure.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasMaxLength(64)
                         .HasColumnType("nvarchar(64)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres");
+                    b.ToTable("Genre");
                 });
 
             modelBuilder.Entity("ApplicationCore.Entities.Movie", b =>
@@ -74,13 +50,17 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(2084)");
 
                     b.Property<decimal?>("Budget")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,4)")
+                        .HasDefaultValue(9.9m);
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedDate")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<string>("ImdbUrl")
                         .HasMaxLength(2084)
@@ -91,6 +71,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(64)");
 
                     b.Property<string>("Overview")
+                        .HasMaxLength(4096)
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PosterUrl")
@@ -98,13 +79,17 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(2084)");
 
                     b.Property<decimal?>("Price")
-                        .HasColumnType("decimal(5,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(5,2)")
+                        .HasDefaultValue(9.9m);
 
                     b.Property<DateTime?>("ReleaseDate")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal?>("Revenue")
-                        .HasColumnType("decimal(18,2)");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,4)")
+                        .HasDefaultValue(9.9m);
 
                     b.Property<int?>("RunTime")
                         .HasColumnType("int");
@@ -114,6 +99,7 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("Title")
+                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -129,83 +115,78 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movie");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entities.MovieCrew", b =>
+            modelBuilder.Entity("ApplicationCore.Entities.Trailer", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("MovieId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CrewId")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasMaxLength(2084)
+                        .HasColumnType("nvarchar(2084)");
 
-                    b.Property<string>("Department")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                    b.Property<string>("TrailerUrl")
+                        .HasMaxLength(2084)
+                        .HasColumnType("nvarchar(2084)");
 
-                    b.Property<string>("Job")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                    b.HasKey("Id");
 
-                    b.HasKey("MovieId", "CrewId", "Department", "Job");
+                    b.HasIndex("MovieId");
 
-                    b.HasIndex("CrewId");
-
-                    b.ToTable("movieCrews");
+                    b.ToTable("Trailer");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entities.MovieGenre", b =>
+            modelBuilder.Entity("MovieGenre", b =>
                 {
-                    b.Property<int>("MovieId")
-                        .HasColumnType("int");
-
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
 
-                    b.HasKey("MovieId", "GenreId");
+                    b.Property<int>("MovieId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("GenreId");
+                    b.HasKey("GenreId", "MovieId");
 
-                    b.ToTable("MovieGenres");
+                    b.HasIndex("MovieId");
+
+                    b.ToTable("MovieGenre");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entities.MovieCrew", b =>
+            modelBuilder.Entity("ApplicationCore.Entities.Trailer", b =>
                 {
-                    b.HasOne("ApplicationCore.Entities.Crew", "Crew")
-                        .WithMany()
-                        .HasForeignKey("CrewId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ApplicationCore.Entities.Movie", "Movie")
-                        .WithMany()
+                        .WithMany("Trailers")
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Crew");
-
                     b.Navigation("Movie");
                 });
 
-            modelBuilder.Entity("ApplicationCore.Entities.MovieGenre", b =>
+            modelBuilder.Entity("MovieGenre", b =>
                 {
-                    b.HasOne("ApplicationCore.Entities.Genre", "Genre")
+                    b.HasOne("ApplicationCore.Entities.Genre", null)
                         .WithMany()
                         .HasForeignKey("GenreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ApplicationCore.Entities.Movie", "Movie")
+                    b.HasOne("ApplicationCore.Entities.Movie", null)
                         .WithMany()
                         .HasForeignKey("MovieId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("Genre");
-
-                    b.Navigation("Movie");
+            modelBuilder.Entity("ApplicationCore.Entities.Movie", b =>
+                {
+                    b.Navigation("Trailers");
                 });
 #pragma warning restore 612, 618
         }

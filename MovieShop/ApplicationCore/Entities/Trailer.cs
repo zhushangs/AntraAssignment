@@ -10,15 +10,10 @@ namespace ApplicationCore.Entities
 {
     public class Trailer
     {
-        [Key]
         public int Id { get; set; }
         public int MovieId { get; set; }
-        [StringLength(450)]
-        public string? TrailerUrl { get; set; }
-        [StringLength(450)]
-        public string? Name { get; set; }
-
-        [ForeignKey("MovieId")]
+        public string TrailerUrl { get; set; }
+        public string Name { get; set; }
         public Movie Movie { get; set; }
     }
 }

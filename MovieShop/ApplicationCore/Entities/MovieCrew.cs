@@ -10,20 +10,14 @@ namespace ApplicationCore.Entities
 {
     public class MovieCrew
     {
-        [Key]
         public int MovieId { get; set; }
-        [Key]
         public int CrewId { get; set; }
-        [Key]
-        [StringLength(128)]
+        [MaxLength(128)]
         public string Department { get; set; }
-        [Key]
-        [StringLength(128)]
+        [MaxLength(128)]
         public string Job { get; set; }
 
-        [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
-        [ForeignKey("CrewId")]
         public Crew Crew { get; set; }
     }
 }

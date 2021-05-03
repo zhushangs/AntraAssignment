@@ -11,41 +11,30 @@ namespace ApplicationCore.Entities
     public class Movie
     {
         public int Id { get; set; }
-
-        [StringLength(256)]
+        [Required]
         public string Title { get; set; }
-        public string? Overview { get; set; }
-        [StringLength(512)]
-        public string? Tagline { get; set; }
-
-        [Column(TypeName = "decimal(18, 2)")]
+        public string Overview { get; set; }
+        public string Tagline { get; set; }
         public decimal? Budget { get; set; }
-
-        [Column(TypeName = "decimal(18, 2)")]
         public decimal? Revenue { get; set; }
-
-        [StringLength(2084)]
-        public string? ImdbUrl { get; set; }
-
-        [StringLength(2084)]
-        public string? TmdbUrl { get; set; }
-
-        [StringLength(2084)]
-        public string? PosterUrl { get; set; }
-
-        [StringLength(2084)]
-        public string? BackdropUrl { get; set; }
-
-        [StringLength(64)]
-        public string? OriginalLanguage { get; set; }
+        public string ImdbUrl { get; set; }
+        public string TmdbUrl { get; set; }
+        public string PosterUrl { get; set; }
+        public string BackdropUrl { get; set; }
+        public string OriginalLanguage { get; set; }
         public DateTime? ReleaseDate { get; set; }
         public int? RunTime { get; set; }
-
-        [Column(TypeName = "decimal(5, 2)")]
         public decimal? Price { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
-        public string? UpdatedBy { get; set; }
-        public string? CreatedBy { get; set; }
+        public string UpdatedBy { get; set; }
+        public string CreatedBy { get; set; }
+        public decimal? Rating { get; set; }
+
+        public ICollection<Trailer> Trailers { get; set; }
+        public ICollection<Genre> Genres { get; set; }
+        public ICollection<MovieCrew> MovieCrews { get; set; }
+        public ICollection<MovieCast> MovieCasts { get; set; }
+        public ICollection<Review> Reviews { get; set; }
     }
 }

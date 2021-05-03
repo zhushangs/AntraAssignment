@@ -12,7 +12,8 @@
           "Microsoft.EntityFrameworkCore": "5.0.5",
           "Microsoft.EntityFrameworkCore.Design": "5.0.5",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5",
-          "Microsoft.EntityFrameworkCore.Tools": "5.0.5"
+          "Microsoft.EntityFrameworkCore.Tools": "5.0.5",
+          "System.ComponentModel.Annotations": "5.0.0"
         },
         "runtime": {
           "Infrastructure.dll": {}
@@ -1072,7 +1073,8 @@
       "ApplicationCore/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "5.0.5",
-          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5"
+          "Microsoft.EntityFrameworkCore.SqlServer": "5.0.5",
+          "System.ComponentModel.Annotations": "5.0.0"
         },
         "runtime": {
           "ApplicationCore.dll": {}

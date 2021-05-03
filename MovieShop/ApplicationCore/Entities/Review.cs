@@ -10,18 +10,12 @@ namespace ApplicationCore.Entities
 {
     public class Review
     {
-        [Key]
         public int MovieId { get; set; }
-        [Key]
         public int UserId { get; set; }
-
-        [Column(TypeName = "decimal(3, 2)")]
         public decimal Rating { get; set; }
-        public string? ReviewText { get; set; }
+        public string ReviewText { get; set; }
 
-        [ForeignKey("MovieId")]
         public Movie Movie { get; set; }
-        [ForeignKey("UserId")]
         public User User { get; set; }
     }
 }
