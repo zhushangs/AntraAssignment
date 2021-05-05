@@ -1,25 +1,63 @@
-﻿@model List<ApplicationCore.Models.Response.MovieResponseModel>
+﻿@*@model List<ApplicationCore.Models.Response.MovieResponseModel>
 
 
-@{
-    ViewData["Title"] = "Home Page";
-}
+    @{
+        ViewData["Title"] = "Home Page";
+    }
 
-<div class="text-center">
-    @ViewData["Pagetitle"] @ViewBag.count 
-</div>
+    <div class="text-center">
+        @ViewData["Pagetitle"] @ViewBag.count
+    </div>
 
-@foreach (var movie in Model)
-{
+    @foreach (var movie in Model)
+    {
+        <ul>
+            <li>
+                @movie.Id
+            </li>
+            <li>
+                @movie.Title
+            </li>
+            <li>
+                @movie.Budget
+            </li>
+        </ul>
+    }*@
+
+@model ApplicationCore.Models.Response.MovieResponseModel
     <ul>
         <li>
-            @movie.Id
+            @Model.Id
         </li>
         <li>
-            @movie.Title
+            @Model.Title
         </li>
         <li>
-            @movie.Budget
+            @Model.Budget
         </li>
     </ul>
-}
+
+
+
+
+@*@model List<ApplicationCore.Models.Response.GenreResponseModel>
+
+
+    @{
+        ViewData["Title"] = "Home Page";
+    }
+
+    <div class="text-center">
+    </div>
+
+    @foreach (var genre in Model)
+    {
+        <ul>
+            <li>
+                @genre.Id
+            </li>
+            <li>
+                @genre.Name
+            </li>
+        </ul>
+    }*@

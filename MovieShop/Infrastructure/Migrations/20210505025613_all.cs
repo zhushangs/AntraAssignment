@@ -3,10 +3,37 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Migrations
 {
-    public partial class UserRole : Migration
+    public partial class all : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_MovieCast_Cast_CastId",
+                table: "MovieCast");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Cast",
+                table: "Cast");
+
+            migrationBuilder.RenameTable(
+                name: "Cast",
+                newName: "Casts");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "Genre",
+                type: "nvarchar(64)",
+                maxLength: 64,
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(64)",
+                oldMaxLength: 64);
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Casts",
+                table: "Casts",
+                column: "Id");
+
             migrationBuilder.CreateTable(
                 name: "Purchase",
                 columns: table => new
@@ -87,10 +114,22 @@ namespace Infrastructure.Migrations
                 name: "IX_UserRole_UserId",
                 table: "UserRole",
                 column: "UserId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_MovieCast_Casts_CastId",
+                table: "MovieCast",
+                column: "CastId",
+                principalTable: "Casts",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_MovieCast_Casts_CastId",
+                table: "MovieCast");
+
             migrationBuilder.DropTable(
                 name: "Purchase");
 
@@ -99,6 +138,39 @@ namespace Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "Role");
+
+            migrationBuilder.DropPrimaryKey(
+                name: "PK_Casts",
+                table: "Casts");
+
+            migrationBuilder.RenameTable(
+                name: "Casts",
+                newName: "Cast");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Name",
+                table: "Genre",
+                type: "nvarchar(64)",
+                maxLength: 64,
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(64)",
+                oldMaxLength: 64,
+                oldNullable: true);
+
+            migrationBuilder.AddPrimaryKey(
+                name: "PK_Cast",
+                table: "Cast",
+                column: "Id");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_MovieCast_Cast_CastId",
+                table: "MovieCast",
+                column: "CastId",
+                principalTable: "Cast",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
     }
 }
