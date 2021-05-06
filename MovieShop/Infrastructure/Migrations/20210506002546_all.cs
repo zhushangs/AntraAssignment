@@ -20,6 +20,16 @@ namespace Infrastructure.Migrations
                 newName: "Casts");
 
             migrationBuilder.AlterColumn<string>(
+                name: "Title",
+                table: "Movie",
+                type: "nvarchar(256)",
+                maxLength: 256,
+                nullable: true,
+                oldClrType: typeof(string),
+                oldType: "nvarchar(256)",
+                oldMaxLength: 256);
+
+            migrationBuilder.AlterColumn<string>(
                 name: "Name",
                 table: "Genre",
                 type: "nvarchar(64)",
@@ -146,6 +156,18 @@ namespace Infrastructure.Migrations
             migrationBuilder.RenameTable(
                 name: "Casts",
                 newName: "Cast");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Title",
+                table: "Movie",
+                type: "nvarchar(256)",
+                maxLength: 256,
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(256)",
+                oldMaxLength: 256,
+                oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
                 name: "Name",

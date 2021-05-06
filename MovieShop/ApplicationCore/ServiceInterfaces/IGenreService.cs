@@ -9,6 +9,7 @@ namespace ApplicationCore.ServiceInterfaces
 {
     public interface IGenreService
     {
-        Task<List<GenreResponseModel>> GetFirst10Genre();
+        Task<IEnumerable<GenreResponseModel>> GetAllGenres();
+        Task<GenreResponseModel> GetCastById(int id);
     }
 }

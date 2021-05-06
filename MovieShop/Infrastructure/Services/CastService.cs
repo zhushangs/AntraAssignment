@@ -18,6 +18,7 @@ namespace Infrastructure.Services
         {
             _castRepository = castRepository;
         }
+
         public async Task<List<CastResponseModel>> GetFirst10Cast()
         {
             var casts = await _castRepository.GetFirst10Casts();
@@ -33,9 +34,20 @@ namespace Infrastructure.Services
                     ProfilePath = cast.ProfilePath
                 });
             }
-
             return first10Casts;
         }
-
+        public async Task<CastResponseModel> GetCastById(int id)
+        {
+            var cast = await _castRepository.GetByIdAsync(id);
+            var theCast = new CastResponseModel
+            {
+                Id = cast.Id,
+                Name = cast.Name,
+                Gender = cast.Gender,
+                TmdbUrl = cast.TmdbUrl,
+                ProfilePath = cast.ProfilePath
+            };
+            return theCast;
+        }
     }
 }

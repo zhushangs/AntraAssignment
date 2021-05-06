@@ -170,7 +170,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 

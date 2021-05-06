@@ -1,3 +1,4 @@
+using ApplicationCore.Entities;
 using ApplicationCore.RepositoryInterfaces;
 using ApplicationCore.ServiceInterfaces;
 using Infrastructure.Data;
@@ -38,6 +39,7 @@ namespace MovieShop.MVC
             services.AddScoped<ICastService, CastService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IAsyncRepository<Genre>, EfRepository<Genre>>();
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<ICastRepository, CastRepository>();
         }

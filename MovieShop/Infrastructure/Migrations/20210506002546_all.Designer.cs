@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MovieShopDbContext))]
-    [Migration("20210505025613_all")]
+    [Migration("20210506002546_all")]
     partial class all
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -172,7 +172,6 @@ namespace Infrastructure.Migrations
                         .HasColumnType("nvarchar(512)");
 
                     b.Property<string>("Title")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 

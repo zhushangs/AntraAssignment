@@ -10,5 +10,6 @@ namespace ApplicationCore.ServiceInterfaces
     public interface ICastService
     {
         Task<List<CastResponseModel>> GetFirst10Cast();
+        Task<CastResponseModel> GetCastById(int id);
     }
 }

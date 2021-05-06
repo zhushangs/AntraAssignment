@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationCore.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +14,6 @@ namespace ApplicationCore.Models.Response
         public string Gender { get; set; }
         public string TmdbUrl { get; set; }
         public string ProfilePath { get; set; }
+        public ICollection<MovieCardResponseModel> Movies { get; set; }
     }
 }

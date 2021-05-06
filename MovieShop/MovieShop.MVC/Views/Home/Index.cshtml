@@ -1,63 +1,19 @@
-﻿@*@model List<ApplicationCore.Models.Response.MovieResponseModel>
+﻿@model List<ApplicationCore.Models.Response.MovieCardResponseModel>
 
 
-    @{
-        ViewData["Title"] = "Home Page";
-    }
+@{
+    ViewData["Title"] = "Home Page";
+}
 
-    <div class="text-center">
-        @ViewData["Pagetitle"] @ViewBag.count
+<div class="rounded">
+    <div class="container-fluid bg-light">
+        <div class="row">
+            @foreach (var movie in Model)
+            {
+                <div class="col-2 col-lg-3 col-sm-4 col-xl-2">
+                    <partial model="movie" name="_MovieCard" />
+                </div>
+            }
+        </div>
     </div>
-
-    @foreach (var movie in Model)
-    {
-        <ul>
-            <li>
-                @movie.Id
-            </li>
-            <li>
-                @movie.Title
-            </li>
-            <li>
-                @movie.Budget
-            </li>
-        </ul>
-    }*@
-
-@model ApplicationCore.Models.Response.MovieResponseModel
-    <ul>
-        <li>
-            @Model.Id
-        </li>
-        <li>
-            @Model.Title
-        </li>
-        <li>
-            @Model.Budget
-        </li>
-    </ul>
-
-
-
-
-@*@model List<ApplicationCore.Models.Response.GenreResponseModel>
-
-
-    @{
-        ViewData["Title"] = "Home Page";
-    }
-
-    <div class="text-center">
-    </div>
-
-    @foreach (var genre in Model)
-    {
-        <ul>
-            <li>
-                @genre.Id
-            </li>
-            <li>
-                @genre.Name
-            </li>
-        </ul>
-    }*@
+</div>

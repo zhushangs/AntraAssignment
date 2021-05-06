@@ -11,7 +11,6 @@ namespace ApplicationCore.Entities
     public class Movie
     {
         public int Id { get; set; }
-        [Required]
         public string Title { get; set; }
         public string Overview { get; set; }
         public string Tagline { get; set; }

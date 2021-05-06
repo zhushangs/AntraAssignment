@@ -16,27 +16,16 @@ namespace MovieShop.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly IMovieService _movieService;
-        private readonly IGenreService _genreService;
-        private readonly ICastService _castService;
         private MovieShopDbContext _dbContext;
-        public HomeController(IMovieService movieService, MovieShopDbContext movieShopDbContext, 
-                              IGenreService genreService, ICastService castService)
+        public HomeController(IMovieService movieService, MovieShopDbContext movieShopDbContext)
         {
             _movieService = movieService;
-            _genreService = genreService;
-            _castService = castService;
             _dbContext = movieShopDbContext;
         }
         public async Task<IActionResult> Index()
         {
-            var movies = await _movieService.GetMovieById(1);
+            var movies = await _movieService.GetTop30RevenueMovie();
             return View(movies);
-
-            //var genres = await _genreService.GetFirst10Genre();
-            //return View(genres);
-
-            //var casts = await _castService.GetFirst10Cast();
-            //return View(casts);
         }
 
         public IActionResult Privacy()

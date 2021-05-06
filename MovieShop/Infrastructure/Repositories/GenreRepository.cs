@@ -15,13 +15,6 @@ namespace Infrastructure.Repositories
         public GenreRepository(MovieShopDbContext dbContext) : base(dbContext)
         {
         }
-
-        public async Task<IEnumerable<Genre>> GetFirst10Genres()
-        {
-            var genres = await _dbContext.Genres.OrderBy(g => g.Id).Take(10).ToListAsync();
-            return genres;
-        }
-
         public override async Task<Genre> GetByIdAsync(int id)
         {
             var genre = await _dbContext.Genres.FirstOrDefaultAsync(g => g.Id == id);

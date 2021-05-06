@@ -9,6 +9,6 @@ namespace ApplicationCore.RepositoryInterfaces
 {
     public interface IGenreRepository: IAsyncRepository<Genre>
     {
-        Task<IEnumerable<Genre>> GetFirst10Genres();
+       
     }
 }
