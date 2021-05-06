@@ -235,3 +235,6 @@ D:\AntraAssignment\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Movies\D
 D:\AntraAssignment\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
 D:\AntraAssignment\MovieShop\MovieShop.MVC\bin\Debug\net5.0\AutoMapper.dll
 D:\AntraAssignment\MovieShop\MovieShop.MVC\bin\Debug\net5.0\libman.json
+D:\AntraAssignment\MovieShop\MovieShop.MVC\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\AntraAssignment\MovieShop\MovieShop.MVC\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\AntraAssignment\MovieShop\MovieShop.MVC\obj\Debug\net5.0\Razor\Views\Movies\Genre.cshtml.g.cs

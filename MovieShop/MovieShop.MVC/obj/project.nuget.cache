@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "giyNMQphmF0YYFZAUrV6UVhl7K2WbYLgn7itGsDShlE0gCz/ayt7OoKq3x2BzEfGs3Xuh0fFYdEh2FCXCMXx6w==",
+  "dgSpecHash": "TeM8I4W2OP5D9/Etpma4eTTV5eoKeBFDVnQ/wufQOSNye5VUFDvrKP0QXzdjdYSTxBLbb3zgMGNUDBByIlvHrQ==",
   "success": true,
   "projectFilePath": "D:\\AntraAssignment\\MovieShop\\MovieShop.MVC\\MovieShop.MVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zhush\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\zhush\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\zhush\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.5\\microsoft.aspnetcore.cryptography.internal.5.0.5.nupkg.sha512",
+    "C:\\Users\\zhush\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.5\\microsoft.aspnetcore.cryptography.keyderivation.5.0.5.nupkg.sha512",
     "C:\\Users\\zhush\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\zhush\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\zhush\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\5.0.0\\microsoft.aspnetcore.razor.language.5.0.0.nupkg.sha512",

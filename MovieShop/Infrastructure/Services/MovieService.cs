@@ -40,7 +40,6 @@ namespace Infrastructure.Services
                     PosterUrl = movie.PosterUrl
                 });
             }
-
             return topMovies;
         }
 
@@ -90,11 +89,21 @@ namespace Infrastructure.Services
             return theMovie;
         }
 
-        //public async Task<MovieCardResponseModel> GetMovieAsync(int id)
-        //{
-        //    var movie = await _movieRepository.GetByIdAsync(id);
-        //    var response = _mapper.Map<MovieCardResponseModel>(movie);
-        //    return response;
-        //}
+        public async Task<List<MovieCardResponseModel>> GetMoviesByGenre(int id)
+        {
+            var movies = await _movieRepository.GetMoviesByGenreAsync(id);
+            var moviesByGenre = new List<MovieCardResponseModel>();
+            foreach (var movie in movies)
+            {
+                moviesByGenre.Add(new MovieCardResponseModel
+                {
+                    Id = movie.Id,
+                    Budget = movie.Budget,
+                    Title = movie.Title,
+                    PosterUrl = movie.PosterUrl
+                });
+            }
+            return moviesByGenre;
+        }
     }
 }
