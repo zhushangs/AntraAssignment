@@ -89,15 +89,15 @@
             </li>
             <li class="list-group-item">
                 <i class="fas fa-hourglass-start"></i>  Run Time 
-                <span class="badge badge-dark">@Model.RunTime</span>
+                <span class="badge badge-dark">@Model.RunTime m</span>
             </li>
             <li class="list-group-item">
                 <i class="fas fa-money-check-alt"></i>  Box Office 
-                <span class="badge badge-dark">@Model.Revenue</span>
+                <span class="badge badge-dark">$ @Model.Revenue?.ToString("#,##0")</span>
             </li>
             <li class="list-group-item">
                 <i class="fas fa-dollar-sign"></i>  Budget
-                <span class="badge badge-dark">@Model.Budget</span>
+                <span class="badge badge-dark">$ @Model.Budget?.ToString("#,##0")</span>
             </li>
             <li class="list-group-item">
                 <i class="fab fa-imdb"></i>
