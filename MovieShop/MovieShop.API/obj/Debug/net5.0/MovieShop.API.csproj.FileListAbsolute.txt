@@ -68,7 +68,12 @@ D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\MovieShop.API.runtim
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\MovieShop.API.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\ref\MovieShop.API.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\MovieShop.API.pdb
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\AutoMapper.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Humanizer.dll
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Lambda2Js.Signed.dll
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -84,6 +89,8 @@ D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.IdentityMo
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Microsoft.OpenApi.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Raven.Client.dll
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Sparrow.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -104,6 +111,10 @@ D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\runtimes\win-x86\nat
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\ApplicationCore.dll
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Infrastructure.dll
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\ApplicationCore.pdb
+D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Infrastructure.pdb
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.csprojAssemblyReference.cache
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.GeneratedMSBuildEditorConfig.editorconfig
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.AssemblyInfoInputs.cache

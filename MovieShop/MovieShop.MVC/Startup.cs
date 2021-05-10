@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MovieShop.MVC.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,7 @@ namespace MovieShop.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddControllersWithViews(options=>options.Filters.Add(typeof(MovieShopHeaderFilter)));
             services.AddDbContext<MovieShopDbContext>(options => options.UseSqlServer(
                Configuration.GetConnectionString("MovieShopDbConnection")
            ));
@@ -39,12 +41,19 @@ namespace MovieShop.MVC
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<ICastService, CastService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddScoped<IPurchaseService, PurchaseService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
             services.AddScoped<IAsyncRepository<Genre>, EfRepository<Genre>>();
+            services.AddScoped<IAsyncRepository<User>, EfRepository<User>>();
+            services.AddScoped<IAsyncRepository<Movie>, EfRepository<Movie>>();
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<ICastRepository, CastRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+
+            services.AddScoped<MovieShopHeaderFilterAttribute>();
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(option=>
             {
@@ -52,6 +61,8 @@ namespace MovieShop.MVC
                 option.ExpireTimeSpan = TimeSpan.FromHours(2);
                 option.LoginPath = "/Account/login";
             });
+
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

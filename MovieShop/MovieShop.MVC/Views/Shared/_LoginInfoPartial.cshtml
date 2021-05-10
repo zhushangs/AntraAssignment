@@ -1,7 +1,27 @@
-﻿@if (false)
+﻿@using ApplicationCore.ServiceInterfaces;
+@inject ICurrentUserService _currentUserService;
+
+@if (User.Identity.IsAuthenticated)
 {
     // LOGIN 
     // name, LINK for profile
+
+    <div class="navbar-collapse collapse w-100 ">
+        <ul class="navbar-nav">
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    @_currentUserService.FullName
+                </a>
+
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" asp-controller="User" asp-action="Purchases" > Purchases </a>
+                    <a class="dropdown-item" asp-controller="Account" asp-action="Profile" asp-route-id="@_currentUserService.UserId"> View Profile </a>
+                    <a class="dropdown-item" asp-controller="Account" asp-action="EditProfile"> Edit Profile </a>
+                    <a class="dropdown-item" asp-controller="Account" asp-action="Logout"> Logout </a>
+                </div>
+            </li>
+        </ul>
+    </div>
 }
 else
 {

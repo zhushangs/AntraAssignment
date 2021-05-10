@@ -11,13 +11,15 @@ using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using ApplicationCore.Entities;
+using Microsoft.AspNetCore.Http;
 
 namespace Infrastructure.Services
 {
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        public UserService(IUserRepository userRepository)
+
+        public UserService(IUserRepository userRepository, IMovieService movieService)
         {
             _userRepository = userRepository;
         }
@@ -25,13 +27,11 @@ namespace Infrastructure.Services
         {
             //check user with email exists in DB
             var dbUser = await _userRepository.GetUserByEmail(userRegisterRequestModel.Email);
-
             //if exist
             if(dbUser != null)
             {
                 throw new Exception("User exists, try Login");
             }
-
             //generate a unique salt
             var salt = CreateSalt();
             //hash pw with salt
@@ -46,7 +46,6 @@ namespace Infrastructure.Services
                 HashedPassword = hashedPassword,
                 DateOfBirth = userRegisterRequestModel.DateOfBirth,
             };
-
             //call repository
             var createdUser = await _userRepository.AddAsync(user);
             var createdUserResponse = new UserRegisterResponseModel
@@ -101,6 +100,65 @@ namespace Infrastructure.Services
                 iterationCount: 10000,
                 numBytesRequested: 256 / 8));
             return hashed;
+        }
+
+        public async Task<UserProfileResponseModel> GetUserProfile(int id)
+        {
+            var user = await _userRepository.GetUserProfileAsync(id);
+            var theUser = new UserProfileResponseModel
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                DateOfBirth = user.DateOfBirth,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+            };
+            return theUser;
+        }
+
+        public async Task<UserProfileResponseModel> Edit(UserProfileRequestModel userProfileRequestModel)
+        {
+            var salt = CreateSalt();
+            var dbUser = await _userRepository.GetUserByEmail(userProfileRequestModel.Email);
+
+            var user = new User()
+            {
+                Id = userProfileRequestModel.Id,
+                Email = userProfileRequestModel.Email,
+                FirstName = userProfileRequestModel.FirstName == null? dbUser.FirstName: userProfileRequestModel.FirstName,
+                LastName = userProfileRequestModel.LastName == null? dbUser.LastName: userProfileRequestModel.LastName,
+                Salt = userProfileRequestModel.Password == null? dbUser.Salt: salt,
+                HashedPassword = userProfileRequestModel.Password == null ? dbUser.HashedPassword : 
+                                CreateHashedPassword(userProfileRequestModel.Password, salt),
+                PhoneNumber = userProfileRequestModel.PhoneNumber == null ? dbUser.PhoneNumber : userProfileRequestModel.PhoneNumber,
+            };
+            var updatedUser = await _userRepository.UpdateAsync(user);
+            var updatedUserResponse = new UserProfileResponseModel
+            {
+                Id = updatedUser.Id,
+                Email = updatedUser.Email,
+                FirstName = updatedUser.FirstName,
+                LastName = updatedUser.LastName
+            };
+            return updatedUserResponse;
+
+           // return await _userRepository.UpdateAsync(user);
+        }
+
+        public async Task<UserDetailsResponseModel> GetUserById(int id)
+        {
+            var user = await _userRepository.GetByIdAsync(id);
+            if (user == null)
+            {
+                throw new DllNotFoundException("user not exist");
+            }
+            var userDetails = new UserDetailsResponseModel
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+            };
+            return userDetails;
         }
     }
 }

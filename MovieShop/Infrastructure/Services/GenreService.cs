@@ -33,14 +33,13 @@ namespace Infrastructure.Services
             }
             return genresList;
         }
-        public async Task<GenreResponseModel> GetCastById(int id)
+        public async Task<GenreResponseModel> GetGenreById(int id)
         {
             var genre = await _genreRepository.GetByIdAsync(id);
             var theGenre = new GenreResponseModel
             {
                 Id = genre.Id,
                 Name = genre.Name,
-                
             };
             return theGenre;
         }

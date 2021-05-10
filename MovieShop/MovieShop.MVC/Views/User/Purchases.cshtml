@@ -1,0 +1,11 @@
+﻿@model IEnumerable<ApplicationCore.Models.Response.MovieCardResponseModel>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "_Layout";
+}
+
+@foreach (var m in Model)
+{
+    @await Html.PartialAsync("_MovieCard", m)
+}

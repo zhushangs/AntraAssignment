@@ -27,9 +27,7 @@ namespace MovieShop.MVC.Controllers
         public async Task<IActionResult> Genre(int id)
         {
             var movies = await _movieService.GetMoviesByGenre(id);
-            //return View("~/Views/Home/Index.cshtml", movies);
             return View(movies);
         }
-
     }
 }
