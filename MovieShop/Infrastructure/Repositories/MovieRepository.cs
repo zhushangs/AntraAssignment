@@ -29,6 +29,7 @@ namespace Infrastructure.Repositories
                     Title = m.Key.Title,
                     Rating = m.Average(r => r.Rating)
                 }).Take(30).ToListAsync();
+
             return movies;
         }
         public async Task<IEnumerable<Movie>> GetTop30HighestRatedMovies()
