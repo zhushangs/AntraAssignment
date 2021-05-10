@@ -36,16 +36,15 @@ namespace MovieShop.API
         {
 
             services.AddControllers();
-            services.AddControllersWithViews();
 
             services.AddScoped<IMovieService, MovieService>();
             services.AddScoped<IGenreService, GenreService>();
             services.AddScoped<ICastService, CastService>();
             services.AddScoped<IUserService, UserService>();
-            //services.AddScoped<ICurrentUserService, CurrentUserService>();
             services.AddScoped<IPurchaseService, PurchaseService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
+            services.AddScoped<IAsyncRepository<Movie>, EfRepository<Movie>>();
             services.AddScoped<IAsyncRepository<Genre>, EfRepository<Genre>>();
             services.AddScoped<IAsyncRepository<User>, EfRepository<User>>();
             services.AddScoped<IGenreRepository, GenreRepository>();

@@ -41,7 +41,7 @@ namespace MovieShop.API.Middlewares
             //send proper http status code
             switch (ex)
             {
-                case ConflictException conflictException:
+                case ApplicationCore.Exceptions.ConflictException conflictException:
                     httpContext.Response.StatusCode = (int)HttpStatusCode.Conflict;
                     break;
                 case NotFoundException notFoundException:

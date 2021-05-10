@@ -25,10 +25,27 @@ namespace Infrastructure.Services
             _genreRepository = genreRepository;
         }
 
+
+        public async Task<IEnumerable<MovieCardResponseModel>> GetAllMovies()
+        {
+            var movies = await _movieRepository.ListAllAsync();
+            var allMovies = new List<MovieCardResponseModel>();
+            foreach (var movie in movies)
+            {
+                allMovies.Add(new MovieCardResponseModel
+                {
+                    Id = movie.Id,
+                    Budget = movie.Budget,
+                    Title = movie.Title,
+                    PosterUrl = movie.PosterUrl
+                });
+            }
+            return allMovies;
+        }
+
         public async Task<List<MovieCardResponseModel>> GetTop30RevenueMovie()
         {
             var movies = await _movieRepository.GetTop30HighestRevenueMovies();
-
             var topMovies = new List<MovieCardResponseModel>();
             foreach (var movie in movies)
             {
@@ -43,7 +60,19 @@ namespace Infrastructure.Services
             return topMovies;
         }
 
-        public async Task<MovieCardResponseModel> GetMovieById(int id)
+        public async Task<IEnumerable<MovieCardResponseModel>> GetTop30RatedMovie()
+        {
+            var movies = await _movieRepository.GetTop30HighestRevenueMovies();
+            var response = movies.Select(m => new MovieCardResponseModel
+            { 
+                Id = m.Id, 
+                Title = m.Title, 
+                PosterUrl = m.PosterUrl 
+            });
+            return response;
+        }
+
+        public async Task<MovieCardResponseModel> GetMovieCardById(int id)
         {
             var movie = await _movieRepository.GetByIdAsync(id);
             var genreList = new List<GenreResponseModel>();
