@@ -63,10 +63,10 @@ namespace Infrastructure.Services
         {
             var movies = await _movieRepository.GetTop30HighestRevenueMovies();
             var response = movies.Select(m => new MovieCardResponseModel
-            { 
-                Id = m.Id, 
-                Title = m.Title, 
-                PosterUrl = m.PosterUrl 
+            {
+                Id = m.Id,
+                Title = m.Title,
+                PosterUrl = m.PosterUrl
             });
             return response;
         }
@@ -110,7 +110,7 @@ namespace Infrastructure.Services
                 ReleaseDate = movie.ReleaseDate,
                 Rating = movie.Rating,
                 Revenue = movie.Revenue,
-                ImdbUrl = movie.ImdbUrl, 
+                ImdbUrl = movie.ImdbUrl,
                 Genres = genreList,
                 Casts = castList,
             };

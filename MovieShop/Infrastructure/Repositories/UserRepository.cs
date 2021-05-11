@@ -13,7 +13,7 @@ namespace Infrastructure.Repositories
 {
     public class UserRepository : EfRepository<User>, IUserRepository
     {
-        public UserRepository(MovieShopDbContext dbContext): base(dbContext)
+        public UserRepository(MovieShopDbContext dbContext) : base(dbContext)
         {
         }
 
@@ -27,7 +27,8 @@ namespace Infrastructure.Repositories
         public async Task<IEnumerable<Movie>> GetUserFavoriteMoviesAsync(int id)
         {
             var movies = await _dbContext.Favorites.Where(f => f.UserId == id).Include(f => f.Movie)
-                .Select(f => new Movie { 
+                .Select(f => new Movie
+                {
                     Id = f.Movie.Id,
                     Title = f.Movie.Title,
                     PosterUrl = f.Movie.PosterUrl

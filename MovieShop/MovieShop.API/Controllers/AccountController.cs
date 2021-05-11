@@ -1,10 +1,14 @@
 ﻿using ApplicationCore.Models.Request;
+using ApplicationCore.Models.Response;
 using ApplicationCore.ServiceInterfaces;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MovieShop.API.Controllers
@@ -36,18 +40,38 @@ namespace MovieShop.API.Controllers
         }
 
         [HttpGet]
-        [Route("")]
-        public async Task<IActionResult> GetUser()
+        //[Route("", Name ="GetAccount")]
+        public async Task<IActionResult> GetUser(LoginResponseModel loginResponseModel)
         {
+            //var claims = new List<Claim>()
+            //{
+            //    new Claim(ClaimTypes.Email, loginResponseModel.Email),
+            //    new Claim(ClaimTypes.Surname, loginResponseModel.LastName),
+            //    new Claim(ClaimTypes.NameIdentifier, loginResponseModel.Id.ToString()),
+            //    new Claim(ClaimTypes.GivenName, loginResponseModel.FirstName)
+            //};
+            //// Identity
+            //var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            //// create cookie
+
+            //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
+            //    new ClaimsPrincipal(claimsIdentity));
             return Ok();
         }
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login()
+        public async Task<IActionResult> Login(UserLoginRequestModel userLoginRequestModel)
         {
+            //var user = await _userService.ValidateUser(userLoginRequestModel.Email, userLoginRequestModel.Password);
+            //if (user == null)
+            //{           
+            //    return NotFound("No User Found");
+            //}
+            //return CreatedAtRoute("GetAccount", new { token = GetUser(user) });
+
             return Ok();
         }
-
     }
 }

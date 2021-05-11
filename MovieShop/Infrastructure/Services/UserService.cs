@@ -18,20 +18,26 @@ namespace Infrastructure.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
-        private readonly IAsyncRepository<Purchase> _purchaseRepository;
+        private readonly IFavoriteRepository _favoriteRepository;
+        private readonly IReviewRepository _reviewRepository;
+        private readonly IPurchaseRepository _purchaseRepository;
+        private readonly IMovieRepository _movieRepository;
 
-
-        public UserService(IUserRepository userRepository, IAsyncRepository<Purchase> purchaseRepository)
+        public UserService(IUserRepository userRepository, IFavoriteRepository favoriteRepository, IReviewRepository reviewRepository,
+                            IPurchaseRepository purchaseRepository, IMovieRepository movieRepository)
         {
             _userRepository = userRepository;
+            _favoriteRepository = favoriteRepository;
+            _reviewRepository = reviewRepository;
             _purchaseRepository = purchaseRepository;
+            _movieRepository = movieRepository;
         }
         public async Task<UserRegisterResponseModel> RegisterUser(UserRegisterRequestModel userRegisterRequestModel)
         {
             //check user with email exists in DB
             var dbUser = await _userRepository.GetUserByEmail(userRegisterRequestModel.Email);
             //if exist
-            if(dbUser != null)
+            if (dbUser != null)
             {
                 throw new Exception("User exists, try Login");
             }
@@ -64,7 +70,7 @@ namespace Infrastructure.Services
         public async Task<LoginResponseModel> ValidateUser(string email, string password)
         {
             var dbUser = await _userRepository.GetUserByEmail(email);
-            if(dbUser == null)
+            if (dbUser == null)
             {
                 return null;
             }
@@ -129,10 +135,10 @@ namespace Infrastructure.Services
             {
                 Id = userProfileRequestModel.Id,
                 Email = userProfileRequestModel.Email,
-                FirstName = userProfileRequestModel.FirstName == null? dbUser.FirstName: userProfileRequestModel.FirstName,
-                LastName = userProfileRequestModel.LastName == null? dbUser.LastName: userProfileRequestModel.LastName,
-                Salt = userProfileRequestModel.Password == null? dbUser.Salt: salt,
-                HashedPassword = userProfileRequestModel.Password == null ? dbUser.HashedPassword : 
+                FirstName = userProfileRequestModel.FirstName == null ? dbUser.FirstName : userProfileRequestModel.FirstName,
+                LastName = userProfileRequestModel.LastName == null ? dbUser.LastName : userProfileRequestModel.LastName,
+                Salt = userProfileRequestModel.Password == null ? dbUser.Salt : salt,
+                HashedPassword = userProfileRequestModel.Password == null ? dbUser.HashedPassword :
                                 CreateHashedPassword(userProfileRequestModel.Password, salt),
                 PhoneNumber = userProfileRequestModel.PhoneNumber == null ? dbUser.PhoneNumber : userProfileRequestModel.PhoneNumber,
             };
@@ -146,7 +152,7 @@ namespace Infrastructure.Services
             };
             return updatedUserResponse;
 
-           // return await _userRepository.UpdateAsync(user);
+            // return await _userRepository.UpdateAsync(user);
         }
 
         public async Task<UserDetailsResponseModel> GetUserById(int id)
@@ -176,8 +182,8 @@ namespace Infrastructure.Services
             var reviewList = new List<MovieReviewResponseModel>();
             foreach (var review in reviews)
             {
-                reviewList.Add(new MovieReviewResponseModel 
-                { 
+                reviewList.Add(new MovieReviewResponseModel
+                {
                     UserId = review.UserId,
                     MovieId = review.MovieId,
                     Rating = review.Rating,
@@ -191,10 +197,57 @@ namespace Infrastructure.Services
             return reviewList;
         }
 
+        public async Task<bool> IsFavoriteMovie(int id, int movidId)
+        {
+            var isFavorite = await _favoriteRepository.GetExistsAsync(f => f.MovieId == movidId && f.UserId == id);
+            return isFavorite;
+        }
+
+        public async Task DeleteMovieReview(int userId, int movieId)
+        {
+            var review = await _reviewRepository.ListAsync(r => r.UserId == userId && r.MovieId == movieId);
+            await _reviewRepository.DeleteAsync(review.First());
+        }
+
+        public async Task<IEnumerable<MovieCardResponseModel>> GetAllPurchasedMovie(int userId)
+        {
+            var movies = await _purchaseRepository.GetPurchasedMovieByUser(userId);
+            var purchaesdMovies = new List<MovieCardResponseModel>();
+            foreach (var movie in movies)
+            {
+                purchaesdMovies.Add(new MovieCardResponseModel
+                {
+                    Id = movie.Id,
+                    Title = movie.Title,
+                    PosterUrl = movie.PosterUrl
+                });
+            }
+            return purchaesdMovies;
+
+        }
+
         public async Task<PurchaseResponseModel> PurchaseMovie(PurchaseRequestModel purchaseRequestModel)
         {
-            //var purchase = await _purchaseRepository.AddAsync();
-            return null;
+            var movie = await _movieRepository.GetByIdAsync(purchaseRequestModel.MovieId);
+            purchaseRequestModel.Price = (decimal)movie.Price;
+            var purchase = new Purchase
+            {
+                MovieId = purchaseRequestModel.MovieId,
+                UserId = purchaseRequestModel.UserId,
+                PurchaseNumber = purchaseRequestModel.PurchaseNumber,
+                PurchaseDateTime = purchaseRequestModel.PurchaseTime,
+                TotalPrice = purchaseRequestModel.Price,
+            };
+            var reponse = await _purchaseRepository.AddAsync(purchase);
+            var purchaseResponse = new PurchaseResponseModel
+            {
+                MovieId = reponse.MovieId,
+                UserId = reponse.UserId,
+                PurchaseNumber = reponse.PurchaseNumber,
+                PurchaseTime = reponse.PurchaseDateTime,
+                Price = reponse.TotalPrice,
+            };
+            return purchaseResponse;
         }
     }
 }

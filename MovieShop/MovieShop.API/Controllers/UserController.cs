@@ -14,23 +14,21 @@ namespace MovieShop.API.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IMovieService _movieService;
         private readonly IUserService _userService;
-        private readonly IPurchaseService _purchaseService;
-        public UserController(IUserService userService, IMovieService movieService, IPurchaseService purchaseService)
+
+        public UserController(IUserService userService)
         {
             _userService = userService;
-            _movieService = movieService;
-            _purchaseService = purchaseService;
         }
 
         [HttpGet]
         [Route("{id:int}/purchases")]
         public async Task<ActionResult> GetUserPurchasedMoviesAsync(int id)
         {
-            var userMovies = await _purchaseService.GetAllPurchasedMovie(id);
+            var userMovies = await _userService.GetAllPurchasedMovie(id);
             return Ok(userMovies);
         }
+
         [HttpGet]
         [Route("{id:int}/reviews")]
         public async Task<ActionResult> GetUserReviewsById(int id)
@@ -38,6 +36,7 @@ namespace MovieShop.API.Controllers
             var reviews = await _userService.GetUserReviews(id);
             return Ok(reviews);
         }
+
         [HttpGet]
         [Route("{id:int}/favorites")]
         public async Task<ActionResult> GetUserFavoritesById(int id)
@@ -50,15 +49,16 @@ namespace MovieShop.API.Controllers
         [Route("{id:int}/movie/{movieId}/favorite")]
         public async Task<ActionResult> GetUserFavoriteById(int id, int movieId)
         {
-            return Ok();
+            var isFavorite = await _userService.IsFavoriteMovie(id, movieId);
+            return Ok(isFavorite);
         }
 
         [HttpPost]
         [Route("purchase")]
         public async Task<ActionResult> PurchaseMovie(PurchaseRequestModel purchaseRequestModel)
         {
-            var purchase = _userService.PurchaseMovie(purchaseRequestModel);
-            return Ok();
+            var purchase = await _userService.PurchaseMovie(purchaseRequestModel);
+            return Ok(purchase);
         }
 
         [HttpPost]
@@ -92,9 +92,10 @@ namespace MovieShop.API.Controllers
 
         [HttpDelete]
         [Route("{userId:int}/movie/{movieId}")]
-        public async Task<ActionResult> DeleteMovie()
+        public async Task<ActionResult> DeleteMovieReview(int userId, int movieId)
         {
-            return Ok();
+            await _userService.DeleteMovieReview(userId, movieId);
+            return NoContent();
         }
     }
 }

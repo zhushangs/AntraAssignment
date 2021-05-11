@@ -13,12 +13,13 @@ namespace MovieShop.MVC.Controllers
     public class UserController : Controller
     {
         private readonly ICurrentUserService _currentUserService;
-        private readonly IPurchaseService _purchaseService;
 
-        public UserController(ICurrentUserService currentUserService, IPurchaseService purchaseService)
+        private readonly IUserService _userService;
+
+        public UserController(ICurrentUserService currentUserService, IUserService userService)
         {
             _currentUserService = currentUserService;
-            _purchaseService = purchaseService;
+            _userService = userService;
         }
         public IActionResult Index()
         {
@@ -29,7 +30,7 @@ namespace MovieShop.MVC.Controllers
         public async Task<IActionResult> Purchases()
         {
             var id = (int)_currentUserService.UserId;
-            var movies = await _purchaseService.GetAllPurchasedMovie(id);
+            var movies = await _userService.GetAllPurchasedMovie(id);
             return View(movies);
         }
 

@@ -59,13 +59,6 @@ D:\ICC\Antra\Lecture\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.dll
 D:\ICC\Antra\Lecture\MovieShop\MovieShop.API\obj\Debug\net5.0\ref\MovieShop.API.dll
 D:\ICC\Antra\Lecture\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.pdb
 D:\ICC\Antra\Lecture\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.genruntimeconfig.cache
-D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.csprojAssemblyReference.cache
-D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.GeneratedMSBuildEditorConfig.editorconfig
-D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.AssemblyInfoInputs.cache
-D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.AssemblyInfo.cs
-D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.csproj.CoreCompileInputs.cache
-D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.MvcApplicationPartsAssemblyInfo.cs
-D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.MvcApplicationPartsAssemblyInfo.cache
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\appsettings.Development.json
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\appsettings.json
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\MovieShop.API.exe
@@ -122,6 +115,13 @@ D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\ApplicationCore.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Infrastructure.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\ApplicationCore.pdb
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Infrastructure.pdb
+D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.csprojAssemblyReference.cache
+D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.GeneratedMSBuildEditorConfig.editorconfig
+D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.AssemblyInfoInputs.cache
+D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.AssemblyInfo.cs
+D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.csproj.CoreCompileInputs.cache
+D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.MvcApplicationPartsAssemblyInfo.cs
+D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.MvcApplicationPartsAssemblyInfo.cache
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\staticwebassets\MovieShop.API.StaticWebAssets.Manifest.cache
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\staticwebassets\MovieShop.API.StaticWebAssets.xml
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\scopedcss\bundle\MovieShop.API.styles.css

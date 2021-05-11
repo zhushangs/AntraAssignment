@@ -9,10 +9,9 @@ namespace ApplicationCore.Models.Response
     public class PurchaseResponseModel
     {
         public int UserId { get; set; }
-        public List<PurchasedMovieResponseModel> PurchasedMovies { get; set; }
-        public class PurchasedMovieResponseModel : MovieCardResponseModel
-        {
-            public DateTime PurchaseDateTime { get; set; }
-        }
+        public int MovieId { get; set; }
+        public Guid PurchaseNumber { get; set; }
+        public DateTime PurchaseTime { get; set; }
+        public decimal Price { get; set; }
     }
 }

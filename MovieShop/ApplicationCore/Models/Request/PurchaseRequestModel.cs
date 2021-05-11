@@ -10,14 +10,14 @@ namespace ApplicationCore.Models.Request
     {
         public PurchaseRequestModel()
         {
-            PurchaseDateTime = DateTime.Now;
+            PurchaseTime = DateTime.Now;
             PurchaseNumber = Guid.NewGuid();
         }
 
         public int UserId { get; set; }
-        public Guid? PurchaseNumber { get; set; }
-        public decimal? TotalPrice { get; set; }
-        public DateTime? PurchaseDateTime { get; set; }
         public int MovieId { get; set; }
+        public Guid PurchaseNumber { get; set; }
+        public DateTime PurchaseTime { get; set; }
+        public decimal Price { get; set; }
     }
 }

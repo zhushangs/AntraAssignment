@@ -99,7 +99,7 @@ namespace MovieShop.MVC.Controllers
             userRequestModel.Email = _currentUserService.Email;
 
             var newUser = await _userService.Edit(userRequestModel);
-            return View();
+            return View(newUser);
         }
     }
 }
