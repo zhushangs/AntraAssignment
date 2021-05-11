@@ -31,7 +31,10 @@ namespace Infrastructure.Repositories
                 {
                     Id = f.Movie.Id,
                     Title = f.Movie.Title,
-                    PosterUrl = f.Movie.PosterUrl
+                    PosterUrl = f.Movie.PosterUrl,
+                    CreatedBy = f.Movie.CreatedBy,
+                    Tagline = f.Movie.Tagline,
+                    Overview = f.Movie.Overview,
                 }).ToListAsync();
             return movies;
         }

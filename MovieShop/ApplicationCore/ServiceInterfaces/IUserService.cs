@@ -22,5 +22,9 @@ namespace ApplicationCore.ServiceInterfaces
         Task DeleteMovieReview(int userId, int movieId);
         Task<IEnumerable<MovieCardResponseModel>> GetAllPurchasedMovie(int id);
         Task<PurchaseResponseModel> PurchaseMovie(PurchaseRequestModel purchaseRequestModel);
+        Task AddFavorite(FavoriteRequestModel favoriteRequestModel);
+        Task RemoveFavorite(FavoriteRequestModel favoriteRequestModel);
+        Task AddReview(ReviewRequestModel reviewRequestModel);
+        Task EditReview(ReviewRequestModel reviewRequestModel);
     }
 }

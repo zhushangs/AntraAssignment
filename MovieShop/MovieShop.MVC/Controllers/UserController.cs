@@ -34,13 +34,13 @@ namespace MovieShop.MVC.Controllers
             return View(movies);
         }
 
-        //[ServiceFilter(typeof(MovieShopHeaderFilterAttribute))]
-        //public async Task<IActionResult> Purchases(PurchaseRequestModel purchaseRequestModel)
-        //{
-        //    //call user service with id and get list of movies that user purchased
-        //    //it should look for cookie is present, cookie should not be expired and get the user id from cookie
-        //   // await _userService.PurchaseMovie(purchaseRequestModel);
-        //    return View();
-        //}
+        [ServiceFilter(typeof(MovieShopHeaderFilterAttribute))]
+        public async Task<IActionResult> Purchases(PurchaseRequestModel purchaseRequestModel)
+        {
+            //call user service with id and get list of movies that user purchased
+            //it should look for cookie is present, cookie should not be expired and get the user id from cookie
+            await _userService.PurchaseMovie(purchaseRequestModel);
+            return View();
+        }
     }
 }

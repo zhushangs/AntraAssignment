@@ -12,6 +12,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using ApplicationCore.Entities;
 using Microsoft.AspNetCore.Http;
+using ApplicationCore.Exceptions;
 
 namespace Infrastructure.Services
 {
@@ -203,6 +204,50 @@ namespace Infrastructure.Services
             return isFavorite;
         }
 
+        public async Task AddFavorite(FavoriteRequestModel favoriteRequestModel)
+        {
+            var favorite = new Favorite
+            {
+                UserId = favoriteRequestModel.UserId,
+                MovieId = favoriteRequestModel.MovieId,
+            };
+
+            await _favoriteRepository.AddAsync(favorite);
+        }
+
+        public async Task RemoveFavorite(FavoriteRequestModel favoriteRequestModel)
+        {
+            var unfavorite = await _favoriteRepository.ListAsync(f => f.MovieId == favoriteRequestModel.MovieId && f.UserId == favoriteRequestModel.UserId);
+            await _favoriteRepository.DeleteAsync(unfavorite.First());
+        }
+
+        public async Task AddReview(ReviewRequestModel reviewRequestModel)
+        {
+            var review = new Review
+            {
+                MovieId = reviewRequestModel.MovieId,
+                UserId = reviewRequestModel.UserId,
+                Rating = reviewRequestModel.Rating,
+                ReviewText = reviewRequestModel.ReviewText,
+            };
+            await _reviewRepository.AddAsync(review);
+        }
+        public async Task EditReview(ReviewRequestModel reviewRequestModel)
+        {
+            var dbReview = _reviewRepository.GetExistsAsync(r => r.MovieId == reviewRequestModel.MovieId && r.UserId == reviewRequestModel.UserId).Result;
+            if (!dbReview)
+            {
+                throw new NotFoundException("Review Not exists");
+            }
+            var review = new Review
+            {
+                UserId = reviewRequestModel.UserId,
+                MovieId = reviewRequestModel.MovieId,
+                Rating = reviewRequestModel.Rating,
+                ReviewText = reviewRequestModel.ReviewText,
+            };
+            await _reviewRepository.UpdateAsync(review);
+        }
         public async Task DeleteMovieReview(int userId, int movieId)
         {
             var review = await _reviewRepository.ListAsync(r => r.UserId == userId && r.MovieId == movieId);
@@ -228,15 +273,12 @@ namespace Infrastructure.Services
 
         public async Task<PurchaseResponseModel> PurchaseMovie(PurchaseRequestModel purchaseRequestModel)
         {
-            var movie = await _movieRepository.GetByIdAsync(purchaseRequestModel.MovieId);
-            purchaseRequestModel.Price = (decimal)movie.Price;
             var purchase = new Purchase
             {
                 MovieId = purchaseRequestModel.MovieId,
                 UserId = purchaseRequestModel.UserId,
                 PurchaseNumber = purchaseRequestModel.PurchaseNumber,
                 PurchaseDateTime = purchaseRequestModel.PurchaseTime,
-                TotalPrice = purchaseRequestModel.Price,
             };
             var reponse = await _purchaseRepository.AddAsync(purchase);
             var purchaseResponse = new PurchaseResponseModel

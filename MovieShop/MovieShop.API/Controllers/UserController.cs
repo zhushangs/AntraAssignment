@@ -63,30 +63,33 @@ namespace MovieShop.API.Controllers
 
         [HttpPost]
         [Route("favorite")]
-        public async Task<ActionResult> AddFavoriteMovies()
+        public async Task<ActionResult> AddFavoriteMovies(FavoriteRequestModel favoriteRequestModel)
         {
-            //await _userService.AddFavorite();
+            await _userService.AddFavorite(favoriteRequestModel);
             return Ok();
         }
 
         [HttpPost]
         [Route("unfavorite")]
-        public async Task<ActionResult> RemoveFavoriteMovies()
+        public async Task<ActionResult> RemoveFavoriteMovies(FavoriteRequestModel favoriteRequestModel)
         {
+            await _userService.RemoveFavorite(favoriteRequestModel);
             return Ok();
         }
 
         [HttpPost]
         [Route("review")]
-        public async Task<ActionResult> AddReview()
+        public async Task<ActionResult> AddReview(ReviewRequestModel reviewRequestModel)
         {
+            await _userService.AddReview(reviewRequestModel);
             return Ok();
         }
 
         [HttpPut]
         [Route("review")]
-        public async Task<ActionResult> EditReview()
+        public async Task<ActionResult> EditReview(ReviewRequestModel review)
         {
+            await _userService.EditReview(review);
             return Ok();
         }
 
@@ -95,7 +98,7 @@ namespace MovieShop.API.Controllers
         public async Task<ActionResult> DeleteMovieReview(int userId, int movieId)
         {
             await _userService.DeleteMovieReview(userId, movieId);
-            return NoContent();
+            return Ok();
         }
     }
 }

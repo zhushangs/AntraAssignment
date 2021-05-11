@@ -18,6 +18,5 @@ namespace ApplicationCore.Models.Request
         public int MovieId { get; set; }
         public Guid PurchaseNumber { get; set; }
         public DateTime PurchaseTime { get; set; }
-        public decimal Price { get; set; }
     }
 }
