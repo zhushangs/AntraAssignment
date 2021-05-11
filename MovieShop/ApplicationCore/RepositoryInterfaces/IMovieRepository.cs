@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models.Response;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,6 @@ namespace ApplicationCore.RepositoryInterfaces
         Task<IEnumerable<Movie>> GetTop30HighestRevenueMovies();
         Task<IEnumerable<Movie>> GetTop30HighestRatedMovies();
         Task<IEnumerable<Movie>> GetMoviesByGenreAsync(int id);
+        
     }
 }

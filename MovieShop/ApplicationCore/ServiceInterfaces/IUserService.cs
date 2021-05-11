@@ -16,6 +16,8 @@ namespace ApplicationCore.ServiceInterfaces
         Task<UserProfileResponseModel> GetUserProfile(int id);
         Task<UserProfileResponseModel> Edit(UserProfileRequestModel userProfileRequestModel);
         Task<UserDetailsResponseModel> GetUserById(int id);
-
+        Task<IEnumerable<Movie>> GetUserFavoriteMovies(int id);
+        Task<IEnumerable<MovieReviewResponseModel>> GetUserReviews(int id);
+        Task<PurchaseResponseModel> PurchaseMovie(PurchaseRequestModel purchaseRequestModel);
     }
 }

@@ -24,10 +24,7 @@ namespace MovieShop.API.Controllers
         public async Task<IActionResult> Register(UserRegisterRequestModel userRegisterRequestModel)
         {
             var user = await _userService.RegisterUser(userRegisterRequestModel);
-
-
             return CreatedAtRoute("GetUser", new { id = user.Id}, user);
-
         }
 
         [HttpGet]
@@ -36,6 +33,20 @@ namespace MovieShop.API.Controllers
         {
             var user = await _userService.GetUserById(id);
             return Ok(user);
+        }
+
+        [HttpGet]
+        [Route("")]
+        public async Task<IActionResult> GetUser()
+        {
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> Login()
+        {
+            return Ok();
         }
 
     }

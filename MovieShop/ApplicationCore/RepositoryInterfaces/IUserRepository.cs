@@ -13,5 +13,8 @@ namespace ApplicationCore.RepositoryInterfaces
     {
         Task<User> GetUserByEmail(string email);
         Task<User> GetUserProfileAsync(int id);
+        Task<IEnumerable<Movie>> GetUserFavoriteMoviesAsync(int id);
+        Task<IEnumerable<Review>> GetUserReviewsAsync(int id);
+        
     }
 }

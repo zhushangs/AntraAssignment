@@ -24,10 +24,27 @@ namespace Infrastructure.Repositories
             return user;
         }
 
+        public async Task<IEnumerable<Movie>> GetUserFavoriteMoviesAsync(int id)
+        {
+            var movies = await _dbContext.Favorites.Where(f => f.UserId == id).Include(f => f.Movie)
+                .Select(f => new Movie { 
+                    Id = f.Movie.Id,
+                    Title = f.Movie.Title,
+                    PosterUrl = f.Movie.PosterUrl
+                }).ToListAsync();
+            return movies;
+        }
+
         public async Task<User> GetUserProfileAsync(int id)
         {
             var user = await _dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
             return user;
+        }
+
+        public async Task<IEnumerable<Review>> GetUserReviewsAsync(int id)
+        {
+            var reviews = await _dbContext.Reviews.Where(r => r.UserId == id).Include(r => r.Movie).Include(r => r.User).ToListAsync();
+            return reviews;
         }
     }
 }

@@ -25,7 +25,6 @@ namespace Infrastructure.Services
             _genreRepository = genreRepository;
         }
 
-
         public async Task<IEnumerable<MovieCardResponseModel>> GetAllMovies()
         {
             var movies = await _movieRepository.ListAllAsync();
@@ -135,5 +134,21 @@ namespace Infrastructure.Services
             return moviesByGenre;
         }
 
+        public async Task<IEnumerable<MovieReviewResponseModel>> GetMovieReviews(int id)
+        {
+            //var movie = await _movieRepository.GetByIdAsync(id);
+            //var response = movies.Select(m => new MovieCardResponseModel
+            //{
+            //    MovieId = movie.Id,
+            //    Rating = movie.Rating,
+            //    ReviewText = new Review
+            //    {
+            //        ReviewText =
+            //    }
+            //    UserId
+            //};
+            //return movie;
+            return null;
+        }
     }
 }

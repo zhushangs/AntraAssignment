@@ -18,10 +18,13 @@ namespace Infrastructure.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IAsyncRepository<Purchase> _purchaseRepository;
 
-        public UserService(IUserRepository userRepository, IMovieService movieService)
+
+        public UserService(IUserRepository userRepository, IAsyncRepository<Purchase> purchaseRepository)
         {
             _userRepository = userRepository;
+            _purchaseRepository = purchaseRepository;
         }
         public async Task<UserRegisterResponseModel> RegisterUser(UserRegisterRequestModel userRegisterRequestModel)
         {
@@ -159,6 +162,39 @@ namespace Infrastructure.Services
                 FirstName = user.FirstName,
             };
             return userDetails;
+        }
+
+        public async Task<IEnumerable<Movie>> GetUserFavoriteMovies(int id)
+        {
+            var movies = await _userRepository.GetUserFavoriteMoviesAsync(id);
+            return movies;
+        }
+
+        public async Task<IEnumerable<MovieReviewResponseModel>> GetUserReviews(int id)
+        {
+            var reviews = await _userRepository.GetUserReviewsAsync(id);
+            var reviewList = new List<MovieReviewResponseModel>();
+            foreach (var review in reviews)
+            {
+                reviewList.Add(new MovieReviewResponseModel 
+                { 
+                    UserId = review.UserId,
+                    MovieId = review.MovieId,
+                    Rating = review.Rating,
+                    ReviewText = review.ReviewText,
+                    Title = review.Movie.Title,
+                    PosterUrl = review.Movie.PosterUrl,
+                    FirstName = review.User.FirstName,
+                    LastName = review.User.LastName
+                });
+            }
+            return reviewList;
+        }
+
+        public async Task<PurchaseResponseModel> PurchaseMovie(PurchaseRequestModel purchaseRequestModel)
+        {
+            //var purchase = await _purchaseRepository.AddAsync();
+            return null;
         }
     }
 }
