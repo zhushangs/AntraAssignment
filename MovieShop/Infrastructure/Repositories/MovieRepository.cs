@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models.Response;
 using ApplicationCore.RepositoryInterfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -55,6 +56,12 @@ namespace Infrastructure.Repositories
                 .SelectMany(g => g.Movies).ToListAsync(); 
             //return movies;
             return new List<Movie>(movies);
+        }
+
+        public async Task<IEnumerable<Review>> GetMoviesReviewsAsync(int id)
+        {
+            var reviews = await _dbContext.Reviews.Where(r=>r.MovieId == id).Include(r => r.Movie).ToListAsync();
+            return reviews;
         }
     }
 }

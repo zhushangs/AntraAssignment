@@ -136,19 +136,15 @@ namespace Infrastructure.Services
 
         public async Task<IEnumerable<MovieReviewResponseModel>> GetMovieReviews(int id)
         {
-            //var movie = await _movieRepository.GetByIdAsync(id);
-            //var response = movies.Select(m => new MovieCardResponseModel
-            //{
-            //    MovieId = movie.Id,
-            //    Rating = movie.Rating,
-            //    ReviewText = new Review
-            //    {
-            //        ReviewText =
-            //    }
-            //    UserId
-            //};
-            //return movie;
-            return null;
+            var reviews = await _movieRepository.GetMoviesReviewsAsync(id);
+            var response = reviews.Select(m => new MovieReviewResponseModel
+            {
+                UserId = m.UserId,
+                MovieId = m.MovieId,
+                Rating = m.Rating,
+                ReviewText = m.ReviewText,
+            });
+            return (IEnumerable<MovieReviewResponseModel>)response;
         }
     }
 }

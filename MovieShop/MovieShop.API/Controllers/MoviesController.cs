@@ -78,13 +78,12 @@ namespace MovieShop.API.Controllers
         [Route("{id:int}/review")]
         public async Task<IActionResult> GetMovieReviews(int id)
         {
-            //var reivews = await _movieService.GetMovieReviews(id);
-            //if (reivews.Any())
-            //{
-            //    return Ok(reivews);
-            //}
-            //return NotFound("No Reivews Found");
-            return Ok();
+            var reivews = await _movieService.GetMovieReviews(id);
+            if (reivews.Any())
+            {
+                return Ok(reivews);
+            }
+            return NotFound("No Reivews Found");
         }
     }
 }
