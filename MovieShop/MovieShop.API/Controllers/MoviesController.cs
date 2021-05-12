@@ -43,7 +43,7 @@ namespace MovieShop.API.Controllers
         }
 
         [HttpGet]
-        [Route("genre/{genreId:int}", Name = "GetbyGenre")]
+        [Route("genre/{genreId:int}")]
         public async Task<IActionResult> GetMoviesByGenre(int genreId)
         {
             var movies = await _movieService.GetMoviesByGenre(genreId);
@@ -55,7 +55,7 @@ namespace MovieShop.API.Controllers
         }
 
         [HttpGet]
-        [Route("{id:int}", Name = "GetMovieById")]
+        [Route("{id:int}", Name = "GetMovie")]
         public async Task<IActionResult> GetMoviesById(int id)
         {
             var movie = await _movieService.GetMovieCardById(id);

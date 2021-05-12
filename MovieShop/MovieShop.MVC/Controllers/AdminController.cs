@@ -18,6 +18,7 @@ namespace MovieShop.MVC.Controllers
         public IActionResult CreateMovie(MovieCreateRequestModel movieCreateRequestModel)
         {
             //take info from view and save it to DB
+
             return View();
         }
 

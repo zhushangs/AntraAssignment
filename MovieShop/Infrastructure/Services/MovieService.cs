@@ -1,4 +1,6 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Exceptions;
+using ApplicationCore.Models.Request;
 using ApplicationCore.Models.Response;
 using ApplicationCore.RepositoryInterfaces;
 using ApplicationCore.ServiceInterfaces;
@@ -23,6 +25,50 @@ namespace Infrastructure.Services
             _movieRepository = movieRepository;
             _castRepository = castRepository;
             _genreRepository = genreRepository;
+        }
+
+        public async Task<MovieCardResponseModel> CreateMovie(MovieCreateRequestModel movieCreateRequestModel)
+        {
+            var movie = new Movie
+            {
+                Title = movieCreateRequestModel.Title,
+                Budget = movieCreateRequestModel.Budget,
+                Revenue = movieCreateRequestModel.Revenue,
+            };
+            var response = await _movieRepository.AddAsync(movie);
+            var createdMovie = new MovieCardResponseModel
+            {
+                Id = response.Id,
+                Title = response.Title,
+                Budget = response.Budget,
+                Revenue = response.Revenue,
+            };
+            return createdMovie;
+        }
+
+        public async Task<MovieCardResponseModel> UpdateMovie(MovieUpdateRequestModel movieUpdateRequestModel)
+        {
+            var dbMovie = await _movieRepository.GetByIdAsync(movieUpdateRequestModel.Id);
+            if (dbMovie == null)
+            {
+                throw new NotFoundException("Movie Not exists");
+            }
+            var movie = new Movie
+            {
+                Id = movieUpdateRequestModel.Id,
+                Title = movieUpdateRequestModel.Title == null? dbMovie.Title: movieUpdateRequestModel.Title,
+                Budget = movieUpdateRequestModel.Budget == 0 ? dbMovie.Budget : movieUpdateRequestModel.Budget,
+                Revenue = movieUpdateRequestModel.Revenue == 0 ? dbMovie.Revenue : movieUpdateRequestModel.Revenue,
+            };
+            var response = await _movieRepository.UpdateAsync(movie);
+            var updatedMovie = new MovieCardResponseModel
+            {
+                Id = response.Id,
+                Budget = response.Budget,
+                Title = response.Title,
+                Revenue = response.Revenue,
+            };
+            return updatedMovie;
         }
 
         public async Task<IEnumerable<MovieCardResponseModel>> GetAllMovies()

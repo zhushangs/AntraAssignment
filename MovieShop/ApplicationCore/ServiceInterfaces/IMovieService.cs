@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Models.Request;
 using ApplicationCore.Models.Response;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace ApplicationCore.ServiceInterfaces
         Task<MovieCardResponseModel> GetMovieCardById(int id);
         Task<List<MovieCardResponseModel>> GetMoviesByGenre(int id);
         Task<IEnumerable<MovieReviewResponseModel>> GetMovieReviews(int id);
-        
+        Task<MovieCardResponseModel> CreateMovie(MovieCreateRequestModel movieCreateRequestModel);
+        Task<MovieCardResponseModel> UpdateMovie(MovieUpdateRequestModel movieUpdateRequestModel);
     }
 }

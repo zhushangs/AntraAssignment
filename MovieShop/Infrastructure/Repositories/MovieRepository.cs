@@ -55,7 +55,7 @@ namespace Infrastructure.Repositories
             var movies = await _dbContext.Genres.Include(g => g.Movies).Where(g => g.Id == id)
                 .SelectMany(g => g.Movies).ToListAsync(); 
             //return movies;
-            return new List<Movie>(movies);
+            return movies;
         }
 
         public async Task<IEnumerable<Review>> GetMoviesReviewsAsync(int id)

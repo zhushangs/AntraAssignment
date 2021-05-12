@@ -42,16 +42,17 @@ namespace MovieShop.MVC
             services.AddScoped<ICastService, CastService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICurrentUserService, CurrentUserService>();
-            services.AddScoped<IPurchaseService, PurchaseService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
+            //services.AddScoped<IAsyncRepository<Movie>, EfRepository<Movie>>();
             services.AddScoped<IAsyncRepository<Genre>, EfRepository<Genre>>();
-            services.AddScoped<IAsyncRepository<User>, EfRepository<User>>();
-            services.AddScoped<IAsyncRepository<Movie>, EfRepository<Movie>>();
+            //services.AddScoped<IAsyncRepository<User>, EfRepository<User>>();
+            services.AddScoped<IFavoriteRepository, FavoriteRepository>();
             services.AddScoped<IGenreRepository, GenreRepository>();
             services.AddScoped<ICastRepository, CastRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPurchaseRepository, PurchaseRepository>();
+            services.AddScoped<IReviewRepository, ReviewRepository>();
 
             services.AddScoped<MovieShopHeaderFilterAttribute>();
 
