@@ -127,7 +127,7 @@ namespace Infrastructure.Services
 
         public async Task<IEnumerable<MovieCardResponseModel>> GetTop30RatedMovie()
         {
-            var movies = await _movieRepository.GetTop30HighestRevenueMovies();
+            var movies = await _movieRepository.GetTop30HighestRatedMovies();
             var response = movies.Select(m => new MovieCardResponseModel
             {
                 Id = m.Id,
