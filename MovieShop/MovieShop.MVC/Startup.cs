@@ -32,7 +32,7 @@ namespace MovieShop.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddControllersWithViews(options=>options.Filters.Add(typeof(MovieShopHeaderFilter)));
+            //services.AddControllersWithViews(options=>options.Filters.Add(typeof(MovieShopHeaderFilterAttribute)));
             services.AddDbContext<MovieShopDbContext>(options => options.UseSqlServer(
                Configuration.GetConnectionString("MovieShopDbConnection")
            ));

@@ -44,7 +44,7 @@ namespace MovieShop.API
             services.AddScoped<IUserService, UserService>();
 
             services.AddScoped<IMovieRepository, MovieRepository>();
-            //services.AddScoped<IAsyncRepository<Movie>, EfRepository<Movie>>();
+            services.AddScoped<IAsyncRepository<Movie>, EfRepository<Movie>>();
             services.AddScoped<IAsyncRepository<Genre>, EfRepository<Genre>>();
             //services.AddScoped<IAsyncRepository<User>, EfRepository<User>>();
             services.AddScoped<IFavoriteRepository, FavoriteRepository>();
@@ -87,6 +87,10 @@ namespace MovieShop.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors(builder => {
+                builder.WithOrigins(Configuration.GetValue<string>("clientSPAUrl")).AllowAnyHeader().AllowAnyMethod();
+            });
 
             app.UseAuthorization();
 

@@ -19,12 +19,31 @@ namespace Infrastructure.Services
         private readonly IMovieRepository _movieRepository;
         private readonly ICastRepository _castRepository;
         private readonly IGenreRepository _genreRepository;
-
-        public MovieService(IMovieRepository movieRepository, ICastRepository castRepository, IGenreRepository genreRepository)
+        private readonly IPurchaseRepository _purchaseRepository;
+        public MovieService(IMovieRepository movieRepository, ICastRepository castRepository, IGenreRepository genreRepository,
+            IPurchaseRepository purchaseRepository)
         {
             _movieRepository = movieRepository;
             _castRepository = castRepository;
             _genreRepository = genreRepository;
+            _purchaseRepository = purchaseRepository;
+        }
+
+
+        public async Task<IEnumerable<MovieCardResponseModel>> GetAllMoviePurchases()
+        {
+            var purchases = await _purchaseRepository.GetAllPurchases();
+            var purchasedMovies = new List<MovieCardResponseModel>();
+            foreach (var purchase in purchases)
+            {
+                purchasedMovies.Add(new MovieCardResponseModel
+                {
+                    Id = purchase.Movie.Id,
+                    Title = purchase.Movie.Title,
+                    Budget = purchase.Movie.Budget,
+                });
+            }
+            return purchasedMovies;
         }
 
         public async Task<MovieCardResponseModel> CreateMovie(MovieCreateRequestModel movieCreateRequestModel)
@@ -46,29 +65,30 @@ namespace Infrastructure.Services
             return createdMovie;
         }
 
-        public async Task<MovieCardResponseModel> UpdateMovie(MovieUpdateRequestModel movieUpdateRequestModel)
+        public async Task<MovieCardResponseModel> UpdateMovie(MovieUpdatedRequestModel movieUpdatedRequestModel)
         {
-            var dbMovie = await _movieRepository.GetByIdAsync(movieUpdateRequestModel.Id);
+            var dbMovie = await _movieRepository.GetByIdAsync(movieUpdatedRequestModel.Id);
             if (dbMovie == null)
             {
                 throw new NotFoundException("Movie Not exists");
             }
-            var movie = new Movie
+            var movie = new Movie()
             {
-                Id = movieUpdateRequestModel.Id,
-                Title = movieUpdateRequestModel.Title == null? dbMovie.Title: movieUpdateRequestModel.Title,
-                Budget = movieUpdateRequestModel.Budget == 0 ? dbMovie.Budget : movieUpdateRequestModel.Budget,
-                Revenue = movieUpdateRequestModel.Revenue == 0 ? dbMovie.Revenue : movieUpdateRequestModel.Revenue,
+                Id = dbMovie.Id,
+                Title = movieUpdatedRequestModel.Title == null ? dbMovie.Title: movieUpdatedRequestModel.Title,
+                Budget = movieUpdatedRequestModel.Budget == 0 ? dbMovie.Budget : movieUpdatedRequestModel.Budget,
+                Revenue = movieUpdatedRequestModel.Revenue == 0 ? dbMovie.Revenue : movieUpdatedRequestModel.Revenue,
             };
-            var response = await _movieRepository.UpdateAsync(movie);
-            var updatedMovie = new MovieCardResponseModel
+            var updateMovie = await _movieRepository.UpdateAsync(movie);
+            var updatedMovieResponse = new MovieCardResponseModel
             {
-                Id = response.Id,
-                Budget = response.Budget,
-                Title = response.Title,
-                Revenue = response.Revenue,
+                Id = updateMovie.Id,
+                Budget = updateMovie.Budget,
+                Title = updateMovie.Title,
+                Revenue = updateMovie.Revenue,
             };
-            return updatedMovie;
+            return updatedMovieResponse;
+           
         }
 
         public async Task<IEnumerable<MovieCardResponseModel>> GetAllMovies()

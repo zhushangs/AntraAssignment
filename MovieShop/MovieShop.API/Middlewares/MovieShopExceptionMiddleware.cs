@@ -1,12 +1,12 @@
-﻿using ApplicationCore.Exceptions;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Raven.Client.Exceptions;
 using System;
 using System.Collections.Generic;
+using System.Formats.Asn1;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using ApplicationCore.Exceptions;
 
 namespace MovieShop.API.Middlewares
 {
@@ -41,7 +41,7 @@ namespace MovieShop.API.Middlewares
             //send proper http status code
             switch (ex)
             {
-                case ApplicationCore.Exceptions.ConflictException conflictException:
+                case ConflictException conflictException:
                     httpContext.Response.StatusCode = (int)HttpStatusCode.Conflict;
                     break;
                 case NotFoundException notFoundException:

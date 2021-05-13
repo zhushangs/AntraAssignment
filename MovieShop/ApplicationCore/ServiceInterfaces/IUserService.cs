@@ -26,5 +26,6 @@ namespace ApplicationCore.ServiceInterfaces
         Task RemoveFavorite(FavoriteRequestModel favoriteRequestModel);
         Task AddReview(ReviewRequestModel reviewRequestModel);
         Task EditReview(ReviewRequestModel reviewRequestModel);
+        Task<User> GetUser(string email);
     }
 }

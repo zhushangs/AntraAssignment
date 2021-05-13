@@ -10,5 +10,6 @@ namespace ApplicationCore.RepositoryInterfaces
     public interface IPurchaseRepository : IAsyncRepository<Purchase>
     {
         Task<IEnumerable<Movie>> GetPurchasedMovieByUser(int userId);
+        Task<IEnumerable<Purchase>> GetAllPurchases();
     }
 }

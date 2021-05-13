@@ -12,12 +12,13 @@ namespace ApplicationCore.ServiceInterfaces
     public interface IMovieService
     {
         Task<IEnumerable<MovieCardResponseModel>> GetAllMovies();
+        Task<IEnumerable<MovieCardResponseModel>> GetAllMoviePurchases();
         Task<List<MovieCardResponseModel>> GetTop30RevenueMovie();
         Task<IEnumerable<MovieCardResponseModel>> GetTop30RatedMovie();
         Task<MovieCardResponseModel> GetMovieCardById(int id);
         Task<List<MovieCardResponseModel>> GetMoviesByGenre(int id);
         Task<IEnumerable<MovieReviewResponseModel>> GetMovieReviews(int id);
         Task<MovieCardResponseModel> CreateMovie(MovieCreateRequestModel movieCreateRequestModel);
-        Task<MovieCardResponseModel> UpdateMovie(MovieUpdateRequestModel movieUpdateRequestModel);
+        Task<MovieCardResponseModel> UpdateMovie(MovieUpdatedRequestModel movieUpdatedRequestModel);
     }
 }

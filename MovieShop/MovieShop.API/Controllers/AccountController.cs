@@ -40,38 +40,24 @@ namespace MovieShop.API.Controllers
         }
 
         [HttpGet]
-        //[Route("", Name ="GetAccount")]
-        public async Task<IActionResult> GetUser(LoginResponseModel loginResponseModel)
+        public async Task<IActionResult> GetUserExist([FromBody] string email)
         {
-            //var claims = new List<Claim>()
-            //{
-            //    new Claim(ClaimTypes.Email, loginResponseModel.Email),
-            //    new Claim(ClaimTypes.Surname, loginResponseModel.LastName),
-            //    new Claim(ClaimTypes.NameIdentifier, loginResponseModel.Id.ToString()),
-            //    new Claim(ClaimTypes.GivenName, loginResponseModel.FirstName)
-            //};
-            //// Identity
-            //var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-
-            //// create cookie
-
-            //await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
-            //    new ClaimsPrincipal(claimsIdentity));
-            return Ok();
+            var user = await _userService.GetUser(email);
+            return Ok(user == null ? new { emailExists = false } : new { emailExists = true });
         }
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login(UserLoginRequestModel userLoginRequestModel)
+        public async Task<IActionResult> Login([FromBody] UserLoginRequestModel userLoginRequestModel)
         {
-            //var user = await _userService.ValidateUser(userLoginRequestModel.Email, userLoginRequestModel.Password);
-            //if (user == null)
-            //{           
-            //    return NotFound("No User Found");
-            //}
-            //return CreatedAtRoute("GetAccount", new { token = GetUser(user) });
-
+            var user = await _userService.ValidateUser(userLoginRequestModel.Email, userLoginRequestModel.Password);
+            if (user == null)
+            {
+                return NotFound("No User Found");
+            }
             return Ok();
+
+           // return Ok();
         }
     }
 }

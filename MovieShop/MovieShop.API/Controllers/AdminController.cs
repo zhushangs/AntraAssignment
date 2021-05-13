@@ -25,7 +25,9 @@ namespace MovieShop.API.Controllers
         [Route("movie")]
         public async Task<IActionResult> GetPurchase()
         {
-            return Ok();
+            var movies = await _movieService.GetAllMoviePurchases();
+            return Ok(movies);
+            //return Ok();
         }
 
         [HttpPost]
@@ -38,10 +40,10 @@ namespace MovieShop.API.Controllers
 
         [HttpPut]
         [Route("movie")]
-        public async Task<IActionResult> EditMovie(MovieUpdateRequestModel movieUpdateRequestModel)
+        public async Task<IActionResult> UpdateMovie(MovieUpdatedRequestModel movieUpdatedRequestModel)
         {
-            var updatedMovie = await _movieService.UpdateMovie(movieUpdateRequestModel);
-            return Ok(updatedMovie);
+            var updatedMovies = await _movieService.UpdateMovie(movieUpdatedRequestModel);
+            return CreatedAtRoute("GetMovie", new { id = updatedMovies.Id }, updatedMovies);
         }
     }
 }

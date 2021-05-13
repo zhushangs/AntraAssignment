@@ -291,5 +291,10 @@ namespace Infrastructure.Services
             };
             return purchaseResponse;
         }
+
+        public async Task<User> GetUser(string email)
+        {
+            return await _userRepository.GetUserByEmail(email);
+        }
     }
 }

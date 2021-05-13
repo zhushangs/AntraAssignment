@@ -20,5 +20,11 @@ namespace Infrastructure.Repositories
             var movies = await _dbContext.Purchases.Where(p => p.UserId == userId).Include(p => p.Movie).Select(p => p.Movie).ToListAsync();
             return movies;
         }
+
+        public async Task<IEnumerable<Purchase>> GetAllPurchases()
+        {
+            var purchse =  await _dbContext.Purchases.Include(p=>p.Movie).ToListAsync();
+            return purchse;
+        }
     }
 }
