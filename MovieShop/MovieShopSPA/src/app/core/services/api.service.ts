@@ -25,13 +25,12 @@ export class ApiService {
 
   }
 
-  // get single json object movie/id
+  //get single json object movie/id
   getOne(path: string, id?: number): Observable<any> {
 
     return this.http.get(`${environment.apiUrl}${path}` + id).pipe(
       map(resp => resp as any)
     )
-
   }
 
   // post something

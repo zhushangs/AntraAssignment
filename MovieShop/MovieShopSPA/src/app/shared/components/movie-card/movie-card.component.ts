@@ -1,3 +1,4 @@
+import { MovieService } from './../../../core/services/movie.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { MovieCard } from '../../models/movieCard';
 
@@ -9,7 +10,7 @@ import { MovieCard } from '../../models/movieCard';
 export class MovieCardComponent implements OnInit {
 
   @Input() movie: MovieCard | undefined;
-  constructor() { }
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
   }

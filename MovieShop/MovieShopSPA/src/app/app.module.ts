@@ -45,7 +45,7 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbDropdownModule
+    NgbDropdownModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

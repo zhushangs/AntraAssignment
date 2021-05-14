@@ -14,7 +14,7 @@ const routes: Routes =
     { path: "", component: HomeComponent },
     { path: "login", component: LoginComponent },
     { path: "register", component: RegisterComponent },
-    { path: "movie/:id", component: MovieDetailsComponent },
+    { path: "movies/:id", component: MovieDetailsComponent },
     { path: "genres/:id", component: MovieCardListComponent },
     { path: "admin/createmovie", component: CreateMovieComponent },
     { path: "admin/createcast", component: CreateCastComponent},
