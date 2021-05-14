@@ -78,8 +78,8 @@ namespace MovieShop.API
         {
             if (env.IsDevelopment())
             {
-                //app.UseDeveloperExceptionPage();
-                app.UseMovieShopExceptionMiddleware();
+                app.UseDeveloperExceptionPage();
+               // app.UseMovieShopExceptionMiddleware();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MovieShop.API v1"));
             }

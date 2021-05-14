@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
 
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GenresComponent } from './genres/genres.component';
@@ -46,6 +48,8 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
     AppRoutingModule,
     HttpClientModule,
     NgbDropdownModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
