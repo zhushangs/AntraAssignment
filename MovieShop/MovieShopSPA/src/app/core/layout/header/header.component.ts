@@ -1,3 +1,5 @@
+import { User } from './../../../shared/models/User';
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  isAuth!: boolean;
+  user!: User;
+  constructor(private authService: AuthService) { }
 
-  ngOnInit():
-    void {
+   ngOnInit(): void {
+    this.authService.isAuth.subscribe((data) => {
+      this.isAuth = data;
+      console.log(this.isAuth);
+    });
+
+    this.authService.currentUser.subscribe((data) => {
+      this.user = data;
+      console.log(this.user);
+    });
   }
-
 }

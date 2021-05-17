@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     this.movieService.getTopRevenueMovies().subscribe(
       m => {
         this.movies = m;
-        console.table(this.movies);
+        //console.table(this.movies);
       }
     );
 

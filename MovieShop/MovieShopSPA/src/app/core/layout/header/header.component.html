@@ -24,7 +24,7 @@
         </div>
       </li>
 
-      <li class="nav-link">
+      <li class="nav-link" *ngIf="!isAuth">
         <a [routerLink]="['/login']">Login</a>
 
         <!-- click here should navigate to login component -->
@@ -32,7 +32,7 @@
         <!-- routerLink -->
       </li>
 
-      <li class="nav-link">
+      <li class="nav-link" *ngIf="!isAuth">
         <a [routerLink]="['/register']">Register</a>
       </li>
     </ul>
