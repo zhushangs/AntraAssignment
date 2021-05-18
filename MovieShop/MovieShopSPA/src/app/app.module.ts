@@ -54,4 +54,6 @@ import { MovieDetailsComponent } from './movies/movie-details/movie-details.comp
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

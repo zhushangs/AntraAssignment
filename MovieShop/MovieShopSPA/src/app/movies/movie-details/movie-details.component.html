@@ -44,13 +44,13 @@
             <ul class="list-group">
                 <li class="list-group-item">
                     <button type="button" class="btn btn-outline-light btn-lg btn-block btn-sm">
-                        <i class="far fa-edit mr-1"></i>
+                        <i class="fa fa-edit mr-1"></i>
                         REVIEW
                     </button>
                 </li>
                 <li class="list-group-item">
                     <button type="button" class="btn btn-outline-light btn-lg btn-block btn-sm">
-                        <i class="fas fa-play mr-1"></i> TRAILER
+                        <i class="fa fa-play mr-1"></i> TRAILER
                     </button>
                 </li>
                 <li class="list-group-item">
@@ -75,27 +75,27 @@
         <hr />
         <ul class="list-group">
             <li class="list-group-item">
-                <i class="far fa-calendar-plus"></i>  Release Date
+                <i class="fa fa-calendar-times-o" aria-hidden="true"></i>  Release Date
                 <span class="badge badge-dark"> {{ movie?.releaseDate | date }} </span>
             </li>
             <li class="list-group-item">
-                <i class="fas fa-hourglass-start"></i>  Run Time
+                <i class="fa fa-hourglass-start"></i>  Run Time
                 <span class="badge badge-dark"> {{movie?.runTime}} m </span>
             </li>
             <li class="list-group-item">
-                <i class="fas fa-money-check-alt"></i>  Box Office
+                <i class="fa fa-money" aria-hidden="true"></i>  Box Office
                 <span class="badge badge-dark"> {{movie?.revenue}} </span>
             </li>
             <li class="list-group-item">
-                <i class="fas fa-dollar-sign"></i>  Budget
+                <i class="fa fa-usd" aria-hidden="true"></i>  Budget
                 <span class="badge badge-dark"> {{movie?.budget}} </span>
             </li>
             <li class="list-group-item">
-                <i class="fab fa-imdb"></i>
+                <i class="fa fa-imdb"></i>
                 <a href="{{ movie?.imdbUrl }}"
                    class="text-dark ml-3"
                    target="_blank">
-                    <i class="fas fa-share-square mr-2"></i>
+                    <i class="fa fa-share-square mr-2"></i>
                 </a>
             </li>
         </ul>
@@ -115,5 +115,3 @@
         </table>
     </div>
 </div>
-
-<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />

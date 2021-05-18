@@ -43,12 +43,15 @@ export class ApiService {
   }
 
   // PUT
-  update() {
-
+  update(path: string, resource: any, id?: number) {
+    return this.http.put(`${environment.apiUrl}${path}` + '/' + resource.id, JSON.stringify({isRead: true}))
+    .pipe(map(response => response))
   }
 
   // DELETE
-  delete() {
+  delete(path: string, id?: number) {
+    return this.http.delete(`${environment.apiUrl}${path}` + '/' + id)
+    .pipe(map(response => response))
 
   }
 
