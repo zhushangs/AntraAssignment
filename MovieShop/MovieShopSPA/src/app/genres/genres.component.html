@@ -1,5 +1,5 @@
 <ul>
   <li *ngFor="let genre of genres">
-    <a [routerLink]="['/genres/', genre.id]"> {{ genre.name }} </a>
+    <a [routerLink]="['/genres/', genre.id]" class="dropdown-item"> {{ genre.name }} </a>
   </li>
 </ul>

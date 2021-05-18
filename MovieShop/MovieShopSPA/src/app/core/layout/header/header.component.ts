@@ -1,6 +1,7 @@
 import { User } from './../../../shared/models/User';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,8 @@ export class HeaderComponent implements OnInit {
 
   isAuth!: boolean;
   user!: User;
-  constructor(private authService: AuthService) { }
+  //currentUser: User;
+  constructor(private authService: AuthService, private router: Router) { }
 
    ngOnInit(): void {
     this.authService.isAuth.subscribe((data) => {
@@ -24,4 +26,10 @@ export class HeaderComponent implements OnInit {
       console.log(this.user);
     });
   }
+    logout() {
+
+    this.authService.logout();
+    this.router.navigateByUrl('/login');
+  }
+
 }
