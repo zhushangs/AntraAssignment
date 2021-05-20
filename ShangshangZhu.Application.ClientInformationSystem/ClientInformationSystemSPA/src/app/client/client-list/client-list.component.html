@@ -1,0 +1,14 @@
+<div>
+  <ul class="list-group list-group-flush">
+         <li class="list-group-item d-flex justify-content-between align-items-center"  *ngFor="let client of clients">
+           <a [routerLink]="['/clients/', client.id]" class="dropdown-item"> {{ client.name }} </a>
+         </li>
+  </ul>
+</div>
+
+<br>
+<hr>
+<div>
+  <a [routerLink]="['/clients/create']" type="button" class="btn btn-outline-primary">Add Client</a>
+</div>
+    

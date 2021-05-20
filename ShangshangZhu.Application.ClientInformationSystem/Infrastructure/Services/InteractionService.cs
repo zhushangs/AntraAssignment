@@ -82,9 +82,9 @@ namespace Infrastructure.Services
             return response;
         }
 
-        public async Task<InteractionResponseModel> UpdateInteraction(InteractionUpdateRequestModel interactionUpdateRequestModel)
+        public async Task<InteractionResponseModel> UpdateInteraction(InteractionUpdateRequestModel interactionUpdateRequestModel, int id)
         {
-            var dbInteraction = await _interactionsRepository.GetByIdAsync(interactionUpdateRequestModel.Id);
+            var dbInteraction = await _interactionsRepository.GetByIdAsync(id);
             if (dbInteraction == null)
             {
                 throw new Exception("No Client Exist");

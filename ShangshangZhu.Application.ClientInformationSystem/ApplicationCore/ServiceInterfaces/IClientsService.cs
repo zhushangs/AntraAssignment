@@ -13,7 +13,7 @@ namespace ApplicationCore.ServiceInterfaces
         Task<List<ClientResponseModel>> GetAllClients();
         Task<ClientResponseModel> CreateClient(ClientRequestModel clientRequestModel);
         Task<ClientResponseModel> GetClientById(int id);
-        Task<ClientResponseModel> UpdateClient(ClientUpdateRequestModel clientUpdateRequestModel);
+        Task<ClientResponseModel> UpdateClient(ClientUpdateRequestModel clientUpdateRequestModel, int id);
         Task DeleteClient(int id);
     }
 }

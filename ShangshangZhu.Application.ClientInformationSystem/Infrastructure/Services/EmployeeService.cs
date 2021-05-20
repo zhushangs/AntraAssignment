@@ -86,9 +86,9 @@ namespace Infrastructure.Services
             return response;
         }
 
-        public async Task<EmployeeResponseModel> UpdateEmployee(EmployeeUpdateRequestModel employeeUpdateRequestModel)
+        public async Task<EmployeeResponseModel> UpdateEmployee(EmployeeUpdateRequestModel employeeUpdateRequestModel, int id)
         {
-            var dbEmployee = await _employeesRepository.GetByIdAsync(employeeUpdateRequestModel.Id);
+            var dbEmployee = await _employeesRepository.GetByIdAsync(id);
             if (dbEmployee == null)
             {
                 throw new Exception("Employee Not Exist");

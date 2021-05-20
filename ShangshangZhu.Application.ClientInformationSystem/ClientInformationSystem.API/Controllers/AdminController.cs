@@ -23,28 +23,28 @@ namespace ClientInformationSystem.API.Controllers
             _employeesService = employeesService;
         }
 
-        [HttpPost]
-        [Route("client")]
-        public async Task<IActionResult> CreateClient(ClientRequestModel clientRequestModel)
-        {
-            var createdClient = await _clientsService.CreateClient(clientRequestModel);
-            return CreatedAtRoute("GetClient", new { id = createdClient.Id }, createdClient);
-        }
+        //[HttpPost]
+        //[Route("client")]
+        //public async Task<IActionResult> CreateClient(ClientRequestModel clientRequestModel)
+        //{
+        //    var createdClient = await _clientsService.CreateClient(clientRequestModel);
+        //    return CreatedAtRoute("GetClient", new { id = createdClient.Id }, createdClient);
+        //}
 
-        [HttpDelete]
-        [Route("client/{id:int}")]
-        public async Task<IActionResult> DeleteClient(int id)
-        {
-            await _clientsService.DeleteClient(id);
-            return Ok();
-        }
+        //[HttpDelete]
+        //[Route("client/{id:int}")]
+        //public async Task<IActionResult> DeleteClient(int id)
+        //{
+        //    await _clientsService.DeleteClient(id);
+        //    return Ok();
+        //}
 
-        [HttpDelete]
-        [Route("employee/{id:int}")]
-        public async Task<IActionResult> DeleteEmployee(int id)
-        {
-            await _employeesService.DeleteEmployee(id);
-            return Ok();
-        }
+        //[HttpDelete]
+        //[Route("employee/{id:int}")]
+        //public async Task<IActionResult> DeleteEmployee(int id)
+        //{
+        //    await _employeesService.DeleteEmployee(id);
+        //    return Ok();
+        //}
     }
 }

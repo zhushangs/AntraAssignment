@@ -1,0 +1,33 @@
+<h1>Details About {{ client?.name }} </h1>
+<table class="table table-bordered table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phones</th>
+          <th scope="col">Address</th>
+          <th scope="col">AddedBy</th>
+          <th scope="col">AddedOn</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ client?.id }}</td>
+          <td>{{ client?.name }}</td>
+          <td>{{ client?.email }}</td>
+          <td>{{ client?.phones }}</td>
+          <td>{{ client?.address }}</td>
+          <td>{{ client?.addedBy }}</td>
+          <td>{{ client?.addedOn }}</td>
+        </tr>
+      </tbody>
+</table>
+
+<br>
+<hr>
+<div>
+  <a [routerLink]="['/clients/update/', client?.id]" type="button" class="btn btn-outline-primary">Update Client</a>
+  <a type="button" [routerLink]="['/clients']" (click)="delete()"  class="btn btn-outline-primary">Delete Client</a>
+</div>

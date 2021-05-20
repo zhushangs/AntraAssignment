@@ -82,9 +82,9 @@ namespace Infrastructure.Services
             return response;
         }
 
-        public async Task<ClientResponseModel> UpdateClient(ClientUpdateRequestModel clientUpdateRequestModel)
+        public async Task<ClientResponseModel> UpdateClient(ClientUpdateRequestModel clientUpdateRequestModel, int id)
         {
-            var dbClient = await _clientsRepository.GetByIdAsync(clientUpdateRequestModel.Id);
+            var dbClient = await _clientsRepository.GetByIdAsync(id);
             if (dbClient == null)
             {
                 throw new Exception("No Client Exist");
@@ -96,7 +96,7 @@ namespace Infrastructure.Services
                 Email = clientUpdateRequestModel.Email == null ? dbClient.Email : clientUpdateRequestModel.Email,
                 Phones = clientUpdateRequestModel.Phones == null ? dbClient.Phones : clientUpdateRequestModel.Phones,
                 AddedBy = clientUpdateRequestModel.AddedBy == 0 ? dbClient.AddedBy : clientUpdateRequestModel.AddedBy,
-                AddedOn = clientUpdateRequestModel.AddedOn == null ? dbClient.AddedOn : clientUpdateRequestModel.AddedOn,
+                AddedOn = dbClient.AddedOn,
             };
             var updatedClient = await _clientsRepository.UpdateAsync(client);
             var response = new ClientResponseModel

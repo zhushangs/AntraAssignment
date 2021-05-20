@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
+  private headers: HttpHeaders | undefined;
   // HttpClient => used to communicate with API
   constructor(protected http: HttpClient) { }
 
@@ -39,8 +40,8 @@ export class ApiService {
   }
 
   // PUT
-  update(path: string, resource: any, id?: number) {
-    return this.http.put(`${environment.apiUrl}${path}` + '/' + resource.id, JSON.stringify({isRead: true}))
+  update(path: string, resource: any) {
+    return this.http.put(`${environment.apiUrl}${path}` + '/' + resource.id, resource)
     .pipe(map(response => response))
   }
 

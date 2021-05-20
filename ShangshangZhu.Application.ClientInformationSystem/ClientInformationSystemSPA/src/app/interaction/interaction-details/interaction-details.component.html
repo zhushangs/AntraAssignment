@@ -1,0 +1,31 @@
+<h1>Details About Interaction No. {{ interaction?.id }} </h1>
+<table class="table table-bordered table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Client ID</th>
+          <th scope="col">Employee ID</th>
+          <th scope="col">Type</th>
+          <th scope="col">Date</th>
+          <th scope="col">Remarks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ interaction?.id }}</td>
+          <td>{{ interaction?.clientId }}</td>
+          <td>{{ interaction?.empId }}</td>
+          <td>{{ interaction?.type }}</td>
+          <td>{{ interaction?.date }}</td>
+          <td>{{ interaction?.remarks }}</td>
+        </tr>
+
+      </tbody>
+</table>
+
+<br>
+<hr>
+<div>
+  <a [routerLink]="['/interactions/update/', interaction?.id]" type="button" class="btn btn-outline-primary">Update Interaction</a>
+  <a type="button" [routerLink]="['/interactions']" (click)="delete()"  class="btn btn-outline-primary">Delete Interaction</a>
+</div>

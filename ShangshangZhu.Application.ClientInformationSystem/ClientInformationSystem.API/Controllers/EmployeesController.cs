@@ -35,11 +35,19 @@ namespace ClientInformationSystem.API.Controllers
             return NotFound("No Employee Found");
         }
 
-        [HttpPut]
-        [Route("update")]
-        public async Task<IActionResult> UpdateEmployee(EmployeeUpdateRequestModel employeeUpdateRequestModel)
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> GetEmployeeById(int id)
         {
-            var updatedEmployee = await _employeesService.UpdateEmployee(employeeUpdateRequestModel);
+            var employee = await _employeesService.GetEmployeeById(id);
+            return Ok(employee);
+        }
+
+        [HttpPut]
+        [Route("update/{id:int}")]
+        public async Task<IActionResult> UpdateEmployee(EmployeeUpdateRequestModel employeeUpdateRequestModel, int id)
+        {
+            var updatedEmployee = await _employeesService.UpdateEmployee(employeeUpdateRequestModel, id);
             return CreatedAtRoute("GetEmployee", new { id = updatedEmployee.Id }, updatedEmployee);
         }
 
@@ -67,18 +75,6 @@ namespace ClientInformationSystem.API.Controllers
         //    return Ok();
         //}
 
-
-
-
-
-
-        //[HttpGet]
-        //[Route("{id:int}", Name = "GetEmployee")]
-        //public async Task<IActionResult> GetEmployeeById(int id)
-        //{
-        //    var employee = await _employeesService.GetEmployeeById(id);
-        //    return Ok(employee);
-        //}
 
         //[HttpPost]
         //[Route("add")]

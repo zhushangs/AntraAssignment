@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div *ngIf="invalidLogin" class="alert alert-danger" >
+      <!-- Display error message -->
+      Invalid Login, please enetr correct un/pw
+</div>
+<div class="container">
+  <form (ngSubmit)="login()">
+    <div class="form-group">
+      <label for="username">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        aria-describedby="nameHelp"
+        name="name"
+        [(ngModel)]="userLogin.name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="passward">Password</label>
+      <input type="password" class="form-control" id="passward"  name="passward" [(ngModel)]="userLogin.password"/>
+    </div>
+    
+    <input type="submit" class="btn btn-primary" value="submit" />
+  </form>
+</div>

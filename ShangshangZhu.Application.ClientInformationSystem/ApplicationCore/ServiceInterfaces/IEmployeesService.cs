@@ -14,7 +14,7 @@ namespace ApplicationCore.ServiceInterfaces
         Task<List<EmployeeResponseModel>> GetAllEmployees();
         Task<EmployeeResponseModel> CreateEmployee(EmployeeRequestModel employeeRequestModel);
         Task<EmployeeResponseModel> GetEmployeeById(int id);
-        Task<EmployeeResponseModel> UpdateEmployee(EmployeeUpdateRequestModel employeeUpdateRequestModel);
+        Task<EmployeeResponseModel> UpdateEmployee(EmployeeUpdateRequestModel employeeUpdateRequestModel, int id);
         Task DeleteEmployee(int id);
         Task<Employees> GetEmployee(string name);
         Task<EmployeeResponseModel> ValidateUser(string name, string password);

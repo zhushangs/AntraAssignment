@@ -1,5 +1,6 @@
 ﻿using ApplicationCore.Models.Request;
 using ApplicationCore.ServiceInterfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -48,10 +49,11 @@ namespace ClientInformationSystem.API.Controllers
         }
 
         [HttpPut]
-        [Route("update")]
-        public async Task<IActionResult> UpdateClient(ClientUpdateRequestModel clientUpdateRequestModel)
+        [Route("update/{id:int}")]
+        public async Task<IActionResult> UpdateClient(ClientUpdateRequestModel clientUpdateRequestModel, int id)
         {
-            var updatedClient = await _clientsService.UpdateClient(clientUpdateRequestModel);
+           
+            var updatedClient = await _clientsService.UpdateClient(clientUpdateRequestModel, id);
             return CreatedAtRoute("GetClient", new { id = updatedClient.Id }, updatedClient);
         }
 

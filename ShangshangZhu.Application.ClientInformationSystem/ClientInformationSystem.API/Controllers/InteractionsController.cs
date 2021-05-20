@@ -48,10 +48,10 @@ namespace ClientInformationSystem.API.Controllers
         }
 
         [HttpPut]
-        [Route("update")]
-        public async Task<IActionResult> UpdateInteraction(InteractionUpdateRequestModel interactionUpdateRequestModel)
+        [Route("update/{id:int}")]
+        public async Task<IActionResult> UpdateInteraction(InteractionUpdateRequestModel interactionUpdateRequestModel, int id)
         {
-            var updatedInteraction = await _interactionsService.UpdateInteraction(interactionUpdateRequestModel);
+            var updatedInteraction = await _interactionsService.UpdateInteraction(interactionUpdateRequestModel, id);
             return CreatedAtRoute("GetInteraction", new { id = updatedInteraction.Id }, updatedInteraction);
         }
 

@@ -1,0 +1,26 @@
+
+<h1>Details About {{ employee?.name }} </h1>
+<table class="table table-bordered table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Designation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ employee?.id }}</td>
+          <td>{{ employee?.name }}</td>
+          <td>{{ employee?.designation }}</td>
+        </tr>
+
+      </tbody>
+</table>
+
+<br>
+<hr>
+<div>
+  <a [routerLink]="['/employees/update/', employee?.id]" type="button" class="btn btn-outline-primary">Update Employee</a>
+  <a type="button" [routerLink]="['/employees']" (click)="delete()"  class="btn btn-outline-primary">Delete Employee</a>
+</div>

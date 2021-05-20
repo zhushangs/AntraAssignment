@@ -8,12 +8,12 @@ namespace ApplicationCore.Models.Request
 {
     public class ClientUpdateRequestModel
     {
-        public int Id { get; set; }
+       // public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phones { get; set; }
         public string Address { get; set; }
         public int? AddedBy { get; set; }
-        public DateTime? AddedOn { get; set; }
+        //public DateTime? AddedOn { get; set; }
     }
 }

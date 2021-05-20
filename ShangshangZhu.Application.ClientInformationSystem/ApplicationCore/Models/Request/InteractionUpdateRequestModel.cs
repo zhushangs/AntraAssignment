@@ -8,7 +8,7 @@ namespace ApplicationCore.Models.Request
 {
     public class InteractionUpdateRequestModel
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public int? ClientId { get; set; }
         public int? EmpId { get; set; }
         public char? type { get; set; }
