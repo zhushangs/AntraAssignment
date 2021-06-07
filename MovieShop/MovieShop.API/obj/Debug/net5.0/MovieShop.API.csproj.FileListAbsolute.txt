@@ -115,7 +115,6 @@ D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\ApplicationCore.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Infrastructure.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\ApplicationCore.pdb
 D:\AntraAssignment\MovieShop\MovieShop.API\bin\Debug\net5.0\Infrastructure.pdb
-D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.csprojAssemblyReference.cache
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.GeneratedMSBuildEditorConfig.editorconfig
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.AssemblyInfoInputs.cache
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.AssemblyInfo.cs
@@ -131,3 +130,4 @@ D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\ref\MovieShop.API.dll
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.pdb
 D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.genruntimeconfig.cache
+D:\AntraAssignment\MovieShop\MovieShop.API\obj\Debug\net5.0\MovieShop.API.csproj.AssemblyReference.cache

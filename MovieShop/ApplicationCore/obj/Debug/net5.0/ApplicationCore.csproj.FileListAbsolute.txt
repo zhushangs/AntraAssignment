@@ -19,7 +19,6 @@ D:\AntraAssignment\MovieShop\ApplicationCore\bin\Debug\net5.0\ApplicationCore.ru
 D:\AntraAssignment\MovieShop\ApplicationCore\bin\Debug\net5.0\ApplicationCore.dll
 D:\AntraAssignment\MovieShop\ApplicationCore\bin\Debug\net5.0\ref\ApplicationCore.dll
 D:\AntraAssignment\MovieShop\ApplicationCore\bin\Debug\net5.0\ApplicationCore.pdb
-D:\AntraAssignment\MovieShop\ApplicationCore\obj\Debug\net5.0\ApplicationCore.csprojAssemblyReference.cache
 D:\AntraAssignment\MovieShop\ApplicationCore\obj\Debug\net5.0\ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
 D:\AntraAssignment\MovieShop\ApplicationCore\obj\Debug\net5.0\ApplicationCore.AssemblyInfoInputs.cache
 D:\AntraAssignment\MovieShop\ApplicationCore\obj\Debug\net5.0\ApplicationCore.AssemblyInfo.cs
@@ -28,3 +27,4 @@ D:\AntraAssignment\MovieShop\ApplicationCore\obj\Debug\net5.0\ApplicationCore.dl
 D:\AntraAssignment\MovieShop\ApplicationCore\obj\Debug\net5.0\ref\ApplicationCore.dll
 D:\AntraAssignment\MovieShop\ApplicationCore\obj\Debug\net5.0\ApplicationCore.pdb
 D:\AntraAssignment\MovieShop\ApplicationCore\obj\Debug\net5.0\ApplicationCore.genruntimeconfig.cache
+D:\AntraAssignment\MovieShop\ApplicationCore\obj\Debug\net5.0\ApplicationCore.csproj.AssemblyReference.cache
